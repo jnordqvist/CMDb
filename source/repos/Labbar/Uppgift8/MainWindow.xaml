@@ -1,0 +1,22 @@
+﻿<Window x:Class="Uppgift8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Uppgift8"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="297" Width="871">
+    <Grid Margin="0,0,-56,98">
+        <TextBox Name="numberOne" Margin="23,117,677,16"></TextBox>
+        <TextBox Name="numberTwo" Margin="325,117,375,16"></TextBox>
+        <StackPanel Margin="266,103,618,-12">
+            <RadioButton Checked="RadioButton_Checked_add">+</RadioButton>
+            <RadioButton Checked="RadioButton_Checked_sub">-</RadioButton>
+            <RadioButton Checked="RadioButton_Checked_mult">*</RadioButton>
+            <RadioButton Checked="RadioButton_Checked_div">/</RadioButton>
+        </StackPanel>
+        
+        <TextBox Name="result" Margin="627,117,73,16"></TextBox>
+        <Label Margin="576,117,-576,-117">=</Label>
+    </Grid>
+</Window>

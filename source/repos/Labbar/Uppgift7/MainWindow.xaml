@@ -1,0 +1,20 @@
+﻿<Window x:Class="Uppgift7.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Uppgift7"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Label Margin="60,40,646,344">Tal 1</Label>
+        <TextBox Name="numberOne" Margin="60,65,578,308"></TextBox>
+        <Label Margin="237,40,469,344">Tal 2</Label>
+        <TextBox Name="numberTwo" Margin="238,65,400,308"></TextBox>
+        <Button Name="calc" Margin="60,131,610,252" Click="calc_Click">Beräkna</Button>
+        <Label Margin="60,217,570,127">Heltal</Label>
+        <TextBox Name="result" Margin="60,242,542,138"></TextBox>
+        <Label Margin="60,296,641,83">Rest</Label>
+        <TextBox Name="remainder" Margin="60,317,542,63"></TextBox>
+    </Grid>
+</Window>

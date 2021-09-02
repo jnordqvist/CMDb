@@ -1,0 +1,23 @@
+﻿<Window x:Class="Uppgift6.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Uppgift6"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="340" Width="311">
+    <Grid Margin="0,0,236,286">
+        <Label Margin="27,10,-27,-31">Tal 1</Label>
+        <TextBox Name="numberOne" Margin="27,53,-27,-64"></TextBox>
+        <Label Margin="157,10,-157,-31">Tal 2</Label>
+        <TextBox Name="numberTwo" Margin="157,53,-157,-64"></TextBox>
+        <Button Name="add" Margin="27,102,-19,-124" Click="calc">+</Button>
+        <Button Name="sub" Margin="72,102,-65,-124" Click="calc">-</Button>
+        <Button Name="mult" Margin="117,102,-109,-124" Click="calc">*</Button>
+        <Button Name="div" Margin="166,102,-148,-124" Click="calc">/</Button>
+
+        <Label Name="resText" Margin="27,188,-27,-207">Resultat</Label>
+        <TextBox Name="result" Margin="27,226,-109,-247"></TextBox>
+        <Button Name="clear" Margin="207,226,-207,-247" Click="clear_Click">rensa</Button>
+    </Grid>
+</Window>

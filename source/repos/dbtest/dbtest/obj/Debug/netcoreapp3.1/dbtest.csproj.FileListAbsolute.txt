@@ -1,0 +1,5 @@
+C:\Users\Joakim\source\repos\dbtest\dbtest\obj\Debug\netcoreapp3.1\dbtest.csprojAssemblyReference.cache
+C:\Users\Joakim\source\repos\dbtest\dbtest\obj\Debug\netcoreapp3.1\MainWindow.g.cs
+C:\Users\Joakim\source\repos\dbtest\dbtest\obj\Debug\netcoreapp3.1\App.g.cs
+C:\Users\Joakim\source\repos\dbtest\dbtest\obj\Debug\netcoreapp3.1\dbtest_MarkupCompile.cache
+C:\Users\Joakim\source\repos\dbtest\dbtest\obj\Debug\netcoreapp3.1\dbtest_MarkupCompile.lref

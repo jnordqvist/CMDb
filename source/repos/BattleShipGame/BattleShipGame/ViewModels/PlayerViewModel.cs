@@ -75,21 +75,70 @@ namespace BattleShipGame.ViewModels
         private bool PlaceShipInOcean(Ship ship, Point point)
         {
             var coordinates = CalculateShipMargin(ship, point);
-            ship.SetCoordinates(point);
+            if (HasSufficientSpace(coordinates))
+            {
+                ship.SetCoordinates(point);
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Calculate the ship margins
+        /// </summary>
+        /// <param name="ship"></param>
+        /// <param name="startPoint"></param>
+        /// <returns></returns>
+        private List<Point> CalculateShipMargin(Ship ship, Point startPoint)
+        {
+            var coordinates = new List<Point>();
+            var xCoordinates = new List<int>();
+            var yCoordinates = new List<int>();
+
+            switch (ship.Direction)
+            {
+                case Direction.Horizontal:
+                    xCoordinates = Enumerable.Range(startPoint.X - 1, ship.Size + 2).ToList();
+                    yCoordinates = Enumerable.Range(startPoint.Y - 1, 3).ToList();
+
+                    break;
+                case Direction.Vertical:
+                    xCoordinates = Enumerable.Range(startPoint.X - 1, 3).ToList();
+                    yCoordinates = Enumerable.Range(startPoint.Y - 1, ship.Size + 2).ToList();
+                    break;
+                default:
+                    break;
+            }
+
+            Point point;
+            foreach (var x in xCoordinates)
+            {
+                foreach (var y in yCoordinates)
+                {
+                    point = new Point(x, y);
+                    coordinates.Add(point);
+                }
+            }
+            //testing
+            return coordinates;
+        }
+
+        private bool HasSufficientSpace(List<Point> coordinates)
+        {
+            foreach (var coordinate in coordinates)
+            {
+                foreach (var ship in Ships)
+                {
+                    if (PointOccupied(coordinate, ship))
+                        return false;
+                }
+            }
             return true;
         }
 
-        private List<Point> CalculateShipMargin(Ship ship, Point startPoint)
+        private bool PointOccupied(Point coordinate, Ship ship)
         {
-            var xCoordinates = new List<int>();
-            var yCoordinates = new List<int>();
-            startPoint = new Point(3, 4);
-            
-                    xCoordinates = Enumerable.Range(startPoint.X - 1, ship.Size + 2).ToList();
-                    yCoordinates = Enumerable.Range(startPoint.Y - 1, ship.Size + 2).ToList();
-
-
-            return new List<Point>();
+            return ship.Coordinates.Where(s => s.X == coordinate.X && s.Y == coordinate.Y).Any();
         }
     }
 }
