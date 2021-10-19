@@ -1,71 +1,272 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
 
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
-/* Provide sufficient contrast against white background */
-a {
-  color: #0366d6;
-}
-
-.btn-primary {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
-  background-color: #1b6ec2;
-  border-color: #1861ac;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
-
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    background-color: #000;
+    font-family: Arial, Helvetica, sans-serif;
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  line-height: 60px; /* Vertically center the text there */
+
+#container {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    overflow-x: hidden;
+}
+
+header {
+    width: 100%;
+    position: relative;
+    background-color: #fff;
+    height: 50px;
+    z-index: 5;
+}
+
+nav {
+    display: grid;
+    height: 100%;
+    align-items: center;
+    grid-template-areas:
+        "burger logotype search";
+    grid-template-columns: 15% 25% 60%;
+    background-color: #ffc506;
+}
+
+#banner {
+    background-color: #ffcccc;
+    color: white;
+    display: flex;
+    justify-content: center;
+    background: linear-gradient(transparent, black);
+    width: 100vw;
+    max-width: 60%;
+    z-index: 2;
+}
+
+.rank {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: gray;
+    height: 25px;
+    width: 25px;
+    text-align: center;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.ratings img {
+    width: auto;
+    max-height: 15px;
+    margin: 0px 5px;
+}
+
+.ratingContainer {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+
+#banner a {
+    text-decoration: none;
+    color: darkblue;
+}
+
+#a1 {
+    background-color: #ffc506;
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.carouselItem {
+    width: 100vw;
+    height: 300px;
+}
+
+#c {
+    display: flex;
+}
+
+
+input:focus {
+    outline: none;
+}
+
+
+footer {
+    background-color: red;
+    display: flex;
+}
+
+    footer a {
+        text-decoration: none;
+    }
+
+.spinnerImage {
+    max-height: 250px;
+    width: auto;
+    z-index: 1;
+}
+
+.spinnerContent {
+    position: relative;
+}
+
+#logo {
+    text-decoration: none;
+    color: orchid;
+    grid-area: logotype;
+}
+
+#burger {
+    min-width: 48px;
+    height: auto;
+    grid-area: burger;
+}
+
+#searchContainer {
+    grid-area: search;
+    display: flex;
+    justify-content: right;
+}
+
+#searchContainerExpanded {
+    display: flex;
+    height: 50px;
+    background-color: bisque;
+    grid-area: burger;
+    grid-column: 1 / span 3;
+    justify-content: right;
+    width: 100%;
+}
+
+    #searchContainerExpanded form {
+        display: block;
+        width: 100%;
+    }
+
+        #searchContainerExpanded form input {
+            display: block;
+            height: 100%;
+            background-color: transparent;
+            font-size: 25px;
+            border: none;
+            margin: 0;
+            width: 80%;
+        }
+
+#searchContainer form {
+    display: none;
+}
+
+#searchContainer img {
+    min-width: 36px;
+}
+
+#burgermenu {
+    position: absolute;
+    top: -50px;
+    height: 100px;
+    width: 100%;
+    background-color: black;
+    transition: top 0.3s ease-in-out;
+    z-index: -1;
+}
+
+    #burgermenu ul {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        list-style: none;
+        justify-content: space-evenly;
+        padding: 0;
+        margin: 0 10px;
+    }
+
+.navlink {
+    padding-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#navlinks {
+    display: none;
+}
+
+@media (min-width: 600px) {
+    footer {
+        background-color: green;
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    footer {
+        background-color: greenyellow;
+    }
+
+    #burgermenu {
+        display: none
+    }
+
+    #burger {
+        display: none;
+    }
+
+    nav {
+        grid-template-areas:
+            "logotype navlinks search";
+        grid-template-columns: 15% 40% 45%;
+    }
+
+    #navlinks {
+        display: inline;
+        grid-area: navlinks;
+    }
+
+        #navlinks ul {
+            display: flex;
+            height: 100%;
+            list-style: none;
+            justify-content: space-evenly;
+            padding: 0;
+            margin: 0 10px;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+        }
+
+    #searchContainer {
+        display: flex;
+        height: 50px;
+        background-color: bisque;
+        justify-content: right;
+        width: 100%;
+    }
+
+        #searchContainer form {
+            display: inline;
+        }
+
+        #searchContainer form {
+            display: block;
+            width: 100%;
+        }
+
+            #searchContainer form input {
+                display: block;
+                height: 100%;
+                background-color: transparent;
+                font-size: 25px;
+                border: none;
+                margin: 0;
+                width: 80%;
+            }
 }

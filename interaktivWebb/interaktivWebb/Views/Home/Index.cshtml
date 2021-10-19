@@ -2,7 +2,47 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+
+<div id="container">
+    <section id="banner">
+        <a asp-controller="Home" asp-action="Movies">
+        <img class="spinnerImage"  src="https://images.unsplash.com/photo-1485498128961-422168ba5f87?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=930&q=80" />
+            </a>
+        <div class="spinnerContent">
+            <h1 class="title">title</h1>
+            <p class="plot">
+                <a class="expandPlot" href="#">Read More</a>
+            </p>
+            <div class="ratings">
+                <div class="ratingContainer">
+                    <img src="Resources/Images/cmdblogo.png">
+                    <p class="CMDbRating"></p>
+                </div>
+                <div class="ratingContainer">
+                    <img src="Resources/Images/imdblogo.png">
+                    <p class="IMDbRating"></p>
+                </div>
+
+            </div>
+            <div class="rank"></div>
+        </div>
+    </section>
+    <section id="a1">
+        <div class="carouselItem">
+            
+        </div>
+        <div class="carouselItem">
+
+        </div>
+        <div class="carouselItem">
+
+        </div>
+        <div class="carouselItem">
+
+        </div>
+    </section>
+
+
 </div>
+
+

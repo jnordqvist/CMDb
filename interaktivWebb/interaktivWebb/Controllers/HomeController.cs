@@ -23,7 +23,7 @@ namespace interaktivWebb.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+        public IActionResult Movies()
         {
             return View();
         }
