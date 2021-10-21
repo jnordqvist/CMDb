@@ -1,5 +1,8 @@
 ﻿using interaktivWebb.Models;
+using interaktivWebb.Models.Dtos.Omdb;
+using interaktivWebb.Models.ViewModels;
 using interaktivWebb.Repositories.Cmdb;
+using interaktivWebb.Repositories.Omdb;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -13,17 +16,51 @@ namespace interaktivWebb.Controllers
     public class HomeController : Controller
     {
 
-        private IRepository repository;
-        public HomeController(IRepository repository)
+        private ICmdbRepository cmdbRepository;
+        private IOmdbRepository omdbRepository;
+        public HomeController(ICmdbRepository cmdbRepository, IOmdbRepository omdbRepository)
         {
-            this.repository = repository;
+            this.cmdbRepository = cmdbRepository;
+            this.omdbRepository = omdbRepository;
         }
 
         public async Task<IActionResult> Index()
         {
-            var movies = await repository.GetMovies();
+            try
+            {
+                var tasks = new List<Task>();
+                var movies = await cmdbRepository.GetMovies();
+                movies = movies.OrderByDescending(o => o.numberOfLikes);
+
+                List<string> sortedMovies = new List<string>();
+
+                var allMovies = new List<OmdbMovieDto>();
+                foreach (var movie in movies)
+                {
+                    sortedMovies.Add(movie.imdbID);
+                    tasks.Add(
+                        Task.Run(
+                            async () =>
+                            {
+                                var result = await omdbRepository.GetMovieInformation(movie.imdbID);
+                                allMovies.Add(result);
+                            }
+                            ));
+                }
+                await Task.WhenAll(tasks);
+
+                allMovies = allMovies.OrderBy(x=> sortedMovies.IndexOf(x.imdbId)).ToList();
+                var viewModel = new HomeViewModel(allMovies);
+
+                return View(viewModel);
+
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
             
-            return View(movies);
         }
 
         

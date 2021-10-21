@@ -8,18 +8,18 @@ using System.Threading.Tasks;
 
 namespace interaktivWebb.Repositories.Cmdb
 {
-    public class Repository : IRepository
+    public class CmdbRepository : ICmdbRepository
     {
         private readonly IApiClient client;
         private readonly string baseUrl = "https://grupp9.dsvkurs.miun.se/api/";
-        public Repository(IApiClient client)
+        public CmdbRepository(IApiClient client)
         {
             this.client = client;
         }
 
-        public async Task<List<MovieDto>> GetMovies()
+        public async Task<IEnumerable<MovieDto>> GetMovies()
         {
-            var res = await client.GetAsyncList<MovieDto>($"{baseUrl}Movie");
+            var res = await client.GetAsync<IEnumerable<MovieDto>>($"{baseUrl}Movie");
             return res;
         }
     }

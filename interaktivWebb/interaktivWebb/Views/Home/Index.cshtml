@@ -1,6 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
+@model HomeViewModel
 
 
 <div id="container">
@@ -9,7 +10,8 @@
         <img class="spinnerImage"  src="https://images.unsplash.com/photo-1485498128961-422168ba5f87?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=930&q=80" />
             </a>
         <div class="spinnerContent">
-            <h1 class="title">title</h1>
+            <h1 class="title">@Html.DisplayFor(model => model.Movies[0].Title)</h1>
+            
             <p class="plot">
                 <a class="expandPlot" href="#">Read More</a>
             </p>
@@ -28,18 +30,12 @@
         </div>
     </section>
     <section id="a1">
-        <div class="carouselItem">
-            
-        </div>
-        <div class="carouselItem">
-
-        </div>
-        <div class="carouselItem">
-
-        </div>
-        <div class="carouselItem">
-
-        </div>
+        @foreach (var movie in Model.Movies.Skip(1))
+        {
+            <div class="carouselItem">@movie.Title</div>
+            <p>@movie.plot</p>
+            <img src="@movie.poster" />
+        }
     </section>
 
 

@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace interaktivWebb.Repositories.Cmdb
 {
-    public interface IRepository
+    public interface ICmdbRepository
     {
-        Task<List<MovieDto>> GetMovies();
+        Task<IEnumerable<MovieDto>> GetMovies();
     }
 }
