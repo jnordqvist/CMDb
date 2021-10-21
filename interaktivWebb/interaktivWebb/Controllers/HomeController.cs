@@ -1,4 +1,5 @@
 ﻿using interaktivWebb.Models;
+using interaktivWebb.Repositories.Cmdb;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -11,27 +12,20 @@ namespace interaktivWebb.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private IRepository repository;
+        public HomeController(IRepository repository)
         {
-            _logger = logger;
+            this.repository = repository;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var movies = await repository.GetMovies();
+            
+            return View(movies);
         }
 
-        public IActionResult Movies()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
+        
     }
 }
