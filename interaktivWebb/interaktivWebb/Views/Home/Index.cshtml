@@ -29,12 +29,21 @@
             <div class="rank"></div>
         </div>
     </section>
-    <section id="a1">
+    <section id="topList">
         @foreach (var movie in Model.Movies.Skip(1))
         {
-            <div class="carouselItem">@movie.Title</div>
+        <div class="movieContainer">
+            <h2 class="">@movie.Title</h2>
             <p>@movie.plot</p>
             <img src="@movie.poster" />
+            @foreach (var rating in movie.ratings)
+            {
+                <div>
+                    <p>@rating.Source:</p>
+                    <p>@rating.Value</p>
+                </div>
+            }
+        </div>
         }
     </section>
 
