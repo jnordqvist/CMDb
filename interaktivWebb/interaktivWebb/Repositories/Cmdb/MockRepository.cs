@@ -26,14 +26,14 @@ namespace interaktivWebb.Repositories.Cmdb
             return GetTestData<IEnumerable<MovieDto>>("response.json");
         }
 
-        [HttpPost]
+        
         public async Task<MovieDto> LikeMovie(string movieId)
         {
             await Task.Delay(0);
             var data = GetTestData<List<MovieDto>>("response.json");
             data.Where(x => x.imdbID == movieId).FirstOrDefault().numberOfLikes++;
             File.WriteAllText($"{basePath}response.json", JsonConvert.SerializeObject(data));
-            return true;
+            return data.Where(x => x.imdbID == movieId).FirstOrDefault();
         }
 
         private T GetTestData<T>(string testfile)

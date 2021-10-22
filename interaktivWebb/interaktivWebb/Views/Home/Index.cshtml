@@ -8,7 +8,7 @@
     <section id="banner">
         <div class="spinnerContent">
             <h1 class="title">@Html.DisplayFor(model => model.Movies[0].Title)</h1>
-            <p>@Html.DisplayFor(model => model.cmdbMovies.Where(x => x.imdbID == model.Movies[0].imdbId).First().numberOfLikes)</p>
+            <p id="like">@Html.DisplayFor(model => model.cmdbMovies.Where(x => x.imdbID == model.Movies[0].imdbId).First().numberOfLikes)</p>
             <p>@Html.DisplayFor(model=>model.Movies[0].plot)</p>
             <img src="@Html.DisplayFor(model=>model.Movies[0].poster)" />
             @foreach (var rating in Model.Movies[0].ratings)
@@ -41,7 +41,7 @@
         {
         <div class="movieContainer">
             <h2 class="">@movie.Title</h2>
-            <p>@Model.cmdbMovies.Where(x => x.imdbID == movie.imdbId).First().numberOfLikes</p>
+            <p class="likes">@Model.cmdbMovies.Where(x => x.imdbID == movie.imdbId).First().numberOfLikes</p>
             <p>@movie.plot</p>
             <img src="@movie.poster" />
             @foreach (var rating in movie.ratings)
@@ -51,13 +51,13 @@
                     <p>@rating.Value</p>
                 </div>
             }
-            <form asp-controller="Home" asp-action="Like" method="get">
-                <button type="submit">like</button>
-            </form>
+            
+                <button class="likeBtn" type="submit">like</button>
+            
         </div>
         }
     </section>
-
+    
 
 </div>
 

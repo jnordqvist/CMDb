@@ -5,6 +5,7 @@ using interaktivWebb.Repositories.Cmdb;
 using interaktivWebb.Repositories.Omdb;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Microsoft.JSInterop;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -73,6 +74,11 @@ namespace interaktivWebb.Controllers
             allMovies = allMovies.OrderBy(x => sortedMovies.IndexOf(x.imdbId)).ToList();
             return new HomeViewModel(allMovies, movies);
         }
-        
+        [JSInvokable]
+        public async Task<MovieDto> helloMovie (string imdbID)
+        {
+            return await cmdbRepository.LikeMovie("tt0120201");
+        }
+
     }
 }
