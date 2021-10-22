@@ -28,31 +28,9 @@ namespace interaktivWebb.Controllers
         {
             try
             {
-                var tasks = new List<Task>();
-                var movies = await cmdbRepository.GetMovies();
-                movies = movies.OrderByDescending(o => o.numberOfLikes);
+                
 
-                List<string> sortedMovies = new List<string>();
-
-                var allMovies = new List<OmdbMovieDto>();
-                foreach (var movie in movies)
-                {
-                    sortedMovies.Add(movie.imdbID);
-                    tasks.Add(
-                        Task.Run(
-                            async () =>
-                            {
-                                var result = await omdbRepository.GetMovieInformation(movie.imdbID);
-                                allMovies.Add(result);
-                            }
-                            ));
-                }
-                await Task.WhenAll(tasks);
-
-                allMovies = allMovies.OrderBy(x=> sortedMovies.IndexOf(x.imdbId)).ToList();
-                var viewModel = new HomeViewModel(allMovies);
-
-                return View(viewModel);
+                return View(await getModel());
 
             }
             catch (Exception)
@@ -62,7 +40,39 @@ namespace interaktivWebb.Controllers
             }
             
         }
+        public async Task<IActionResult> Like()
+        {
+            var likedMovie = await cmdbRepository.LikeMovie("tt0120201");
+            var model = await getModel();
+            return View("index", model);
+        }
 
+        private async Task<HomeViewModel> getModel()
+        {
+            var tasks = new List<Task>();
+            var movies = await cmdbRepository.GetMovies();
+            movies = movies.OrderByDescending(o => o.numberOfLikes);
+
+            List<string> sortedMovies = new List<string>();
+
+            var allMovies = new List<OmdbMovieDto>();
+            foreach (var movie in movies)
+            {
+                sortedMovies.Add(movie.imdbID);
+                tasks.Add(
+                    Task.Run(
+                        async () =>
+                        {
+                            var result = await omdbRepository.GetMovieInformation(movie.imdbID);
+                            allMovies.Add(result);
+                        }
+                        ));
+            }
+            await Task.WhenAll(tasks);
+
+            allMovies = allMovies.OrderBy(x => sortedMovies.IndexOf(x.imdbId)).ToList();
+            return new HomeViewModel(allMovies, movies);
+        }
         
     }
 }

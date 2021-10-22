@@ -87,8 +87,12 @@ nav {
 
 .movieContainer {
     width: 100vw;
-    height: 300px;
     background-color: #ffc506;
+    overflow:hidden;
+}
+
+.movieContainer img{
+    max-height: 300px;
 }
 
 #c {

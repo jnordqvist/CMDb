@@ -9,9 +9,14 @@ namespace interaktivWebb.Models.ViewModels
     public class HomeViewModel
     {
         public List<OmdbMovieDto> Movies { get; set; }
-        public HomeViewModel(List<OmdbMovieDto> movies)
+        public IEnumerable<MovieDto> cmdbMovies { get; set; }
+
+        public HomeViewModel(List<OmdbMovieDto> movies, IEnumerable<MovieDto> cmdbMovies)
         {
             Movies = movies;
+            this.cmdbMovies = cmdbMovies;
+
+
         }
     }
 }

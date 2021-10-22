@@ -1,4 +1,5 @@
 using interaktivWebb.Infrastructure;
+using interaktivWebb.Repositories;
 using interaktivWebb.Repositories.Cmdb;
 using interaktivWebb.Repositories.Omdb;
 using Microsoft.AspNetCore.Builder;
@@ -26,7 +27,7 @@ namespace interaktivWebb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ICmdbRepository, CmdbRepository>();
+            services.AddScoped<ICmdbRepository, MockRepository>();
             services.AddScoped<IOmdbRepository, OmdbRepository>();
             services.AddScoped<IApiClient, ApiClient>();
             services.AddControllersWithViews();
