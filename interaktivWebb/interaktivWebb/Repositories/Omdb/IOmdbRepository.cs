@@ -9,5 +9,6 @@ namespace interaktivWebb.Repositories.Omdb
     public interface IOmdbRepository
     {
         Task<OmdbMovieDto> GetMovieInformation(string imdbId);
+        Task<OmdbMovieDto> GetMovieInformationByTitle(string title);
     }
 }

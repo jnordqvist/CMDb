@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace interaktivWebb.Controllers
@@ -20,13 +21,23 @@ namespace interaktivWebb.Controllers
         }
         public async Task<IActionResult> Movies(string id)
         {
-            var test = id;
+            Regex reg = new Regex("^(tt[0-9]{7})$");
+            if (reg.IsMatch(id))
+            {
+                var movieInformation = await omdbRepository.GetMovieInformation(id);
+                var cmdbMovie = await cmdbRepository.GetMovie(id);
+                var model = new MovieViewModel(movieInformation, cmdbMovie);
+                return View(model);
+            }
+            else
+            {
+                string title = id.Replace(" ", "+");
+                var movieInformation = await omdbRepository.GetMovieInformationByTitle(title);
+                var cmdbMovie = await cmdbRepository.GetMovie(movieInformation.imdbId);
+                var model = new MovieViewModel(movieInformation, cmdbMovie);
+                return View(model);
+            }
 
-            var movieInformation =  await omdbRepository.GetMovieInformation(id);
-            var cmdbMovie = await cmdbRepository.GetMovie(id);
-            var model = new MovieViewModel(movieInformation, cmdbMovie);
-
-            return View(model);
         }
     }
 }

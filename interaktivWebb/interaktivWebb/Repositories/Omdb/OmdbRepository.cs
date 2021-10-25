@@ -23,6 +23,11 @@ namespace interaktivWebb.Repositories.Omdb
             var res = await client.GetAsync<OmdbMovieDto>($"{baseUrl}i={imdbId}{key}&plot=full");
             return res;
         }
+        public async Task<OmdbMovieDto> GetMovieInformationByTitle(string title)
+        {
+            var res = await client.GetAsync<OmdbMovieDto>($"{baseUrl}t={title}{key}&plot=full");
+            return res;
+        }
 
     }
 }

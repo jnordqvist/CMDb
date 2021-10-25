@@ -5,12 +5,13 @@
 
 
 <div id="container">
+   
     <section id="banner">
         <div class="spinnerContent">
             <h1 class="title"></h1>
             @Html.ActionLink(@Model.Movies[0].Title, "Movies", "DetailPage", null, null, null, new { id = @Model.Movies[0].imdbId }, null)
             <p id="like"></p>
-            <div><p>@Model.Movies[0].plot.Substring(0, 50)...<button class="expandPlot">Read More</button></p><p style="visibility:hidden">@Model.Movies[0].plot</p></div>
+            <div><p style="visibility: visible">@Model.Movies[0].plot.Substring(0, 50)...</p><p style="visibility:hidden">@Model.Movies[0].plot</p><button class="expandPlot">Read More</button></div>
             <img src="@Html.DisplayFor(model=>model.Movies[0].poster)" />
             @foreach (var rating in Model.Movies[0].ratings)
             {
@@ -45,7 +46,7 @@
         <div class="movieContainer">
             @Html.ActionLink(@movie.Title, "Movies", "DetailPage", null, null, null, new { id = @movie.imdbId }, null)
             <p class="likes">@Model.cmdbMovies.Where(x => x.imdbID == movie.imdbId).First().numberOfLikes</p>
-            <div><p>@movie.plot.Substring(0, 50)...<button class="expandPlot">Read More</button></p><p style="visibility:hidden">@movie.plot</p></div>
+            <div><p>@movie.plot.Substring(0, 50)...</p><p style="visibility:hidden">@movie.plot</p><button class="expandPlot">Read More</button></div>
 
             <img src="@movie.poster" />
             @foreach (var rating in movie.ratings)

@@ -41,12 +41,6 @@ namespace interaktivWebb.Controllers
             }
             
         }
-        public async Task<IActionResult> Like()
-        {
-            var likedMovie = await cmdbRepository.LikeMovie("tt0120201");
-            var model = await getModel();
-            return View("index", model);
-        }
 
         private async Task<HomeViewModel> getModel()
         {
@@ -73,11 +67,6 @@ namespace interaktivWebb.Controllers
 
             allMovies = allMovies.OrderBy(x => sortedMovies.IndexOf(x.imdbId)).ToList();
             return new HomeViewModel(allMovies, movies);
-        }
-        [JSInvokable]
-        public async Task<MovieDto> helloMovie (string imdbID)
-        {
-            return await cmdbRepository.LikeMovie("tt0120201");
         }
 
     }

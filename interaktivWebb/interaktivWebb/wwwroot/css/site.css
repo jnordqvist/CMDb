@@ -20,8 +20,13 @@ header {
     width: 100%;
     position: relative;
     background-color: #fff;
-    height: 50px;
+    height: 300px;
     z-index: 5;
+}
+
+#previewSearch {
+    width: 500px;
+    background-color: white;
 }
 
 nav {
@@ -260,15 +265,12 @@ footer {
             display: inline;
         }
 
-        #searchContainer form {
-            display: block;
-            width: 100%;
-        }
+        
 
             #searchContainer form input {
-                display: block;
-                height: 100%;
-                background-color: transparent;
+                display: inline;
+                height: 50%;
+                background-color: white;
                 font-size: 25px;
                 border: none;
                 margin: 0;
