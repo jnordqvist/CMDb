@@ -23,6 +23,12 @@ namespace interaktivWebb.Repositories.Cmdb
             return res;
         }
 
+        public async Task<MovieDto> GetMovie(string id)
+        {
+            var res = await client.GetAsync<MovieDto>($"{baseUrl}Movie/{id}");
+            return res;
+        }
+
         public Task<MovieDto> LikeMovie(string movieId)
         {
             throw new NotImplementedException();

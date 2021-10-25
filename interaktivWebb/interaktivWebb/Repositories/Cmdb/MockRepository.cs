@@ -11,13 +11,18 @@ using System.Threading.Tasks;
 namespace interaktivWebb.Repositories.Cmdb
 {
 
-    public class MockRepository : ICmdbRepository
+    public class MockRepository //: ICmdbRepository
     {
         private readonly string basePath;
 
         public MockRepository(IWebHostEnvironment environment)
         {
             basePath = $@"{environment.ContentRootPath}\Mock\";
+        }
+
+        public Task<MovieDto> GetMovie(string id)
+        {
+            throw new NotImplementedException();
         }
 
         public async Task<IEnumerable<MovieDto>> GetMovies()

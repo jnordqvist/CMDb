@@ -2,21 +2,29 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace interaktivWebb.Models.ViewModels
 {
     public class HomeViewModel
     {
-        public List<OmdbMovieDto> Movies { get; set; }
-        public IEnumerable<MovieDto> cmdbMovies { get; set; }
+        public List<OmdbMovieDto> Movies { get; }
+        public IEnumerable<MovieDto> cmdbMovies { get; }
 
         public HomeViewModel(List<OmdbMovieDto> movies, IEnumerable<MovieDto> cmdbMovies)
         {
             Movies = movies;
             this.cmdbMovies = cmdbMovies;
 
-
+            foreach (var movie in movies)
+            {
+                foreach (var rating in movie.ratings)
+                {
+                    string trimmed = Regex.Replace(rating.Source, @" ", "");
+                    rating.Source = trimmed;
+                }
+            }
         }
     }
 }

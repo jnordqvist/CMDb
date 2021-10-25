@@ -1,0 +1,29 @@
+﻿
+#movieContainer {
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.poster {
+    max-width: 600px;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: auto;
+}
+
+#director {
+    font-size: 16px;
+    color:green;
+}
+
+#releaseDate {
+    font-size: 15px;
+}
+
+#runtime {
+    font-size: 15px;
+}
+
+

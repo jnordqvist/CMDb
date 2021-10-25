@@ -8,6 +8,7 @@ namespace interaktivWebb.Repositories.Cmdb
 {
     public interface ICmdbRepository
     {
+        Task<MovieDto> GetMovie(string id);
         Task<IEnumerable<MovieDto>> GetMovies();
         Task<MovieDto> LikeMovie(string movieId);
     }

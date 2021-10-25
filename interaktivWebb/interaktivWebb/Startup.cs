@@ -27,7 +27,7 @@ namespace interaktivWebb
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddScoped<ICmdbRepository, MockRepository>();
+            services.AddScoped<ICmdbRepository, CmdbRepository>();
             services.AddScoped<IOmdbRepository, OmdbRepository>();
             services.AddScoped<IApiClient, ApiClient>();
             services.AddControllersWithViews();

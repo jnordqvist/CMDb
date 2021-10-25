@@ -1,0 +1,31 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model MovieViewModel
+
+<link href="~/css/detailPage.css" rel="stylesheet" />
+<section id="movieContainer">
+    <img class="poster" src="@Model.movie.poster" />
+    <div class="spinnerContent">
+        <p>likes: <p id="likes">@Html.DisplayFor(model => model.cmdbMovie.numberOfLikes)</p></p>
+        <p>dislikes: <p id="dislikes"> @Html.DisplayFor(model => model.cmdbMovie.numberOfDislikes)</p></p>
+        <h1 class="title">title</h1>
+        <h2 id="director">@Html.DisplayFor(model => model.movie.director)</h2>
+        <h2 id="releaseDate"></h2>
+        <p class="plot"></p>
+        <h2 id="runtime"></h2>
+        <h3 id="genre"></h3>
+        <h3 id="actors"></h3>
+        <div class="ratings">
+        </div>
+        <h3 id="awards"></h3>
+        <div class="rank"></div>
+        <button id="likeBtn" value="@Model.movie.imdbId">Like</button>
+        <button id="dislikeBtn" value="@Model.movie.imdbId">Dislike</button>
+    </div>
+</section>
+
+
+<script src="~/js/site.js" asp-append-version="true"></script>
