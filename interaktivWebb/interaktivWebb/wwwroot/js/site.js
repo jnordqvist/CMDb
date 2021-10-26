@@ -8,12 +8,12 @@
 //    console.log("hello")
 //}https://grupp9.dsvkurs.miun.se/api/Movie/tt0120201/like
 
-const baseUrl = 'https://grupp9.dsvkurs.miun.se/api/Movie'
+const baseUrlCmdb = 'https://grupp9.dsvkurs.miun.se/api/Movie'
 
 async function likeMovie() {
     document.querySelector("#likeBtn").disabled = true
     const id = document.querySelector("#likeBtn").value
-    const response = await fetch(`${baseUrl}/${id}/like`).then(response => response.json())
+    const response = await fetch(`${baseUrlCmdb}/${id}/like`).then(response => response.json())
 
     document.querySelector("#likes").textContent = response.numberOfLikes
     document.querySelector("#likeBtn").disabled = false
@@ -22,7 +22,7 @@ async function likeMovie() {
 async function dislikeMovie() {
     document.querySelector("#dislikeBtn").disabled = true
     const id = document.querySelector("#likeBtn").value
-    const response = await fetch(`${baseUrl}/${id}/dislike`).then(response => response.json())
+    const response = await fetch(`${baseUrlCmdb}/${id}/dislike`).then(response => response.json())
 
     document.querySelector("#dislikes").textContent = response.numberOfDislikes
     document.querySelector("#dislikeBtn").disabled = false

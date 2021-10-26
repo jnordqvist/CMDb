@@ -14,7 +14,7 @@
             <img id="burger" src="~/images/burgerClosed.svg" />
             <a id="logo" href="#this">CMDb</a>
             <div id="searchContainer">
-                <form asp-action="Movies" asp-controller="DetailPage" asp- method="get">
+                <form asp-action="Movies" asp-controller="DetailPage" method="get">
                     <input id="searchField" name="id" type="text" placeholder="Search" required />
                     <input type="submit" />
                 </form>
@@ -49,8 +49,12 @@
             </div>
         </nav>
         <div id="previewSearch" style="height:300px">
-            <p id="previewTitle"></p>
-            <img id="previewImg" src="" />
+            
+            <a id="searchLink" asp-action="Movies" asp-controller="DetailPage" asp-route-id="">
+                <p id="previewTitle"></p>
+            </a>
+                <img id="previewImg" src="" />
+            
         </div>
     </Header>
 
