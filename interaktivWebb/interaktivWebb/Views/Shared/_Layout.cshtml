@@ -15,8 +15,7 @@
             <a id="logo" href="#this">CMDb</a>
             <div id="searchContainer">
                 <form asp-action="Movies" asp-controller="DetailPage" method="get">
-                    <input id="searchField" name="id" type="text" placeholder="Search" required />
-                    <input type="submit" />
+                    <input id="searchField" name="id" type="text" placeholder="Search" required autocomplete="off" />
                 </form>
                 <img id="search" src="~/images/magnifyingGlass.svg" />
             </div>
@@ -47,15 +46,16 @@
                     </li>
                 </ul>
             </div>
-        </nav>
-        <div id="previewSearch" style="height:300px">
-            
-            @*<a id="searchLink" asp-action="Movies" asp-controller="DetailPage" asp-route-id="">
+            <div id="previewSearch">
+
+                @*<a id="searchLink" asp-action="Movies" asp-controller="DetailPage" asp-route-id="">
                 <p id="previewTitle"></p>
             </a>
                 <img id="previewImg" src="" />*@
-            
-        </div>
+
+            </div>
+        </nav>
+        
     </Header>
 
     <div class="container">

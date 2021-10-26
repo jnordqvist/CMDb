@@ -11,17 +11,23 @@ async function search() {
     div.innerHTML = ''
     let input = document.querySelector("#searchField").value;
     const response = await fetch(`${baseUrl}s=${input}${key}`).then(response => response.json())
-    let movies = []
+    console.log(response)
     if (response.Response === "True") {
         for (var movie in response.Search) {
-            movies.push(response.Search[movie])
             let currentMovie = response.Search[movie]
             let template =
                 `<a href="/DetailPage/Movies/${currentMovie.Title}">
-                    <h1>${currentMovie.Title}</h1>
                     <img src="${currentMovie.Poster}"/>
-                </a>`
+                </a>
+                <div class="moviePreviewTextContainer">
+                <a href="/DetailPage/Movies/${currentMovie.Title}">
+                    <h1>${currentMovie.Title}</h1>
+                </a>
+                <h2>(${currentMovie.Year})</h2>
+                </div>
+                `
             let innerDiv = document.createElement("div")
+            innerDiv.id = "moviePreviewContainer"
             innerDiv.innerHTML = template
             div.appendChild(innerDiv)
         }
@@ -31,24 +37,35 @@ async function search() {
         if (response.Response != "False") {
             let template =
                         `<a href="/DetailPage/Movies/${response.Title}">
-                                <h1>${response.Title}</h1>
                                 <img src="${response.Poster}"/>
-                            </a>`
+                         </a>
+                        <div class="moviePreviewTextContainer">
+                         <a href="/DetailPage/Movies/${response.Title}">
+                                <h1>${response.Title}</h1>
+                         </a>
+                         <h2>(${response.Year})</h2>
+                        </div>
+                        `
+                         
             let innerDiv = document.createElement("div")
+            innerDiv.id = "moviePreviewContainer"
             innerDiv.innerHTML = template
             div.appendChild(innerDiv)
         }
     }
-    
-    //title.textContent = response.Title
-    //poster.src = response.Poster
-    //link.setAttribute("href", `/DetailPage/Movies/` + response.Title)
-
-    //let template =
-    //    `<a asp-controller="DetailPage" asp-action="Movies" asp-route-id="${response.Title}" href="@Url.Action("Movies", "DetailPage")?itemId=${response.Title}">`
-
-    /*div.innerHTML = template + div.innerHTML + "</a>"*/
-
 }
 
-document.querySelector("#searchField").addEventListener("input", search)
+const showSearchSuggestions = () => {
+    div.style.display = "flex"
+}
+
+const hideSearchSuggestions = () => {
+    setTimeout(function () {
+        div.style.display = "none"
+    },80)
+}
+
+let searchField = document.querySelector("#searchField")
+searchField.addEventListener("blur", hideSearchSuggestions)
+searchField.addEventListener("focus", showSearchSuggestions)
+searchField.addEventListener("input", search)

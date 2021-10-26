@@ -20,13 +20,44 @@ header {
     width: 100%;
     position: relative;
     background-color: #fff;
-    height: 300px;
+    height: 50px;
     z-index: 5;
 }
 
 #previewSearch {
-    width: 500px;
-    background-color: white;
+    position:absolute;
+    width: 45%;
+    top:50px;
+    left: 55%;
+    display:flex;
+    height:auto;
+    background-color: #1c1c1c; 
+    flex-direction:column;
+}
+#previewSearch a{
+    text-decoration:none;
+    color:white;
+    margin:5px;
+}
+
+#previewSearch h2{
+    color: lightgrey;
+}
+
+#previewSearch img{
+    max-width:150px;
+    height:auto;
+}
+
+#moviePreviewContainer{
+    display:flex;
+    margin:10px;
+    border-bottom: solid 2px lightgrey;
+}
+
+.moviePreviewTextContainer{
+    display:flex;
+    align-items:center;
 }
 
 nav {
@@ -34,8 +65,10 @@ nav {
     height: 100%;
     align-items: center;
     grid-template-areas:
-        "burger logotype search";
-    grid-template-columns: 15% 25% 60%;
+        "burger logotype search"
+        ". searchResult .";
+    grid-template-rows: 1fr;
+    grid-template-columns: 15% 25%;
     background-color: #ffc506;
 }
 
@@ -241,17 +274,17 @@ footer {
         grid-area: navlinks;
     }
 
-        #navlinks ul {
-            display: flex;
-            height: 100%;
-            list-style: none;
-            justify-content: space-evenly;
-            padding: 0;
-            margin: 0 10px;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-evenly;
-        }
+    #navlinks ul {
+        display: flex;
+        height: 100%;
+        list-style: none;
+        justify-content: space-evenly;
+        padding: 0;
+        margin: 0 10px;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+    }
 
     #searchContainer {
         display: flex;
@@ -261,20 +294,22 @@ footer {
         width: 100%;
     }
 
-        #searchContainer form {
-            display: inline;
-        }
+    #searchContainer form {
+        display: flex;
+        align-items:center;
+        width:100%
+    }
 
         
 
-            #searchContainer form input {
-                display: inline;
-                height: 50%;
-                background-color: white;
-                font-size: 25px;
-                border: none;
-                margin: 0;
-                width: 80%;
-            }
+    #searchContainer form input {
+        display: inline;
+        height: 50%;
+        background-color: transparent;
+        font-size: 25px;
+        border: none;
+        margin: 0;
+        width: 80%;
+    }
 }
 
