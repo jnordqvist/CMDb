@@ -76,11 +76,23 @@ nav {
     background-color: #ffcccc;
     color: white;
     display: flex;
-    justify-content: center;
-    background: linear-gradient(transparent, black);
+    flex-direction: column;
+    align-items: center;
     width: 100vw;
-    max-width: 60%;
     z-index: 2;
+    position: relative;
+}
+
+#banner div {
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#banner img {
+    max-height: auto;
+    max-width: 250px;
 }
 
 .rank {
@@ -112,7 +124,10 @@ nav {
 
 #banner a {
     text-decoration: none;
-    color: darkblue;
+    color: White;
+    font-size: 25px;
+    font-weight: 900;
+
 }
 
 #topList {
@@ -152,15 +167,8 @@ footer {
         text-decoration: none;
     }
 
-.spinnerImage {
-    max-height: 250px;
-    width: auto;
-    z-index: 1;
-}
 
-.spinnerContent {
-    position: relative;
-}
+
 
 #logo {
     text-decoration: none;

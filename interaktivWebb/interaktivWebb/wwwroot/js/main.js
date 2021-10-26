@@ -11,13 +11,13 @@ const expandPlot = () => {
 
     if (parent.lastChild.textContent == "Read More") {
 
-        parent.firstChild.style.visibility = "hidden"
-        parent.childNodes[1].style.visibility = "visible"
+        parent.firstChild.style.display = "none"
+        parent.childNodes[1].style.display = "flex"
         parent.lastChild.textContent = "Read Less"
     }
     else {
-        parent.firstChild.style.visibility = "visible"
-        parent.childNodes[1].style.visibility = "hidden"
+        parent.firstChild.style.display = "flex"
+        parent.childNodes[1].style.display = "none"
         parent.lastChild.textContent = "Read More"
     }
     
