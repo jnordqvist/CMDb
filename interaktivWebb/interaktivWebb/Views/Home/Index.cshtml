@@ -12,8 +12,15 @@
 
         @Html.ActionLink(@Model.Movies[0].Title, "Movies", "DetailPage", null, null, null, new { id = @Model.Movies[0].imdbId }, null)
         <img src="@Html.DisplayFor(model=>model.Movies[0].poster)" />
-        <div><p>@Model.Movies[0].plot.Substring(0, 50)...</p><p style="display: none">@Model.Movies[0].plot</p><button class="expandPlot">Read More</button></div>
+        @if (@Model.Movies[0].plot.Length >= 50)
+        {
+            <div><p>@Model.Movies[0].plot.Substring(0, 50)...</p><p style="display: none">@Model.Movies[0].plot</p><button class="expandPlot">Read More</button></div>
+        }
+        else
+        {
+            <div><p>@Model.Movies[0].plot</p></div>
 
+        }
         @foreach (var rating in Model.Movies[0].ratings)
         {
             <div>
@@ -32,9 +39,19 @@
         <div class="movieContainer">
             @Html.ActionLink(@movie.Title, "Movies", "DetailPage", null, null, null, new { id = @movie.imdbId }, null)
             <p class="likes">@Model.cmdbMovies.Where(x => x.imdbID == movie.imdbId).First().numberOfLikes</p>
-            <div><p>@movie.plot.Substring(0, 50)...</p><p style="display: none">@movie.plot</p><button class="expandPlot">Read More</button></div>
+            @if (@movie.plot.Length >= 50)
+            {
+                <div><p>@movie.plot.Substring(0, 50)...</p><p style="display: none">@movie.plot</p><button class="expandPlot">Read More</button></div>
+            }
+            else
+            {
+                <div><p>@movie.plot</p></div>
 
-            <img src="@movie.poster" />
+            }
+            @if (movie.poster != "N/A")
+            {
+                <img src="@movie.poster" />
+            }
             @foreach (var rating in movie.ratings)
             {
                 <div>

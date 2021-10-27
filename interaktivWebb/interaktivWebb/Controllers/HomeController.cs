@@ -54,14 +54,9 @@ namespace interaktivWebb.Controllers
             foreach (var movie in movies)
             {
                 sortedMovies.Add(movie.imdbID);
-                tasks.Add(
-                    Task.Run(
-                        async () =>
-                        {
-                            var result = await omdbRepository.GetMovieInformation(movie.imdbID);
-                            allMovies.Add(result);
-                        }
-                        ));
+                var result = omdbRepository.GetMovieInformation(movie.imdbID);
+                allMovies.Add(result.Result);
+                tasks.Add(result);
             }
             await Task.WhenAll(tasks);
 
