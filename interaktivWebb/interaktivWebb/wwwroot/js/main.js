@@ -1,4 +1,11 @@
-﻿
+﻿let rankings = document.querySelectorAll(".rank")
+let rankNr = 1
+for (var rank in rankings) {
+    console.log(rankings[rank])
+    rankings[rank].innerHTML = String(rankNr)
+    rankNr += 1
+}
+
 const expandPlot = () => {
     
     var target = event.target

@@ -60,6 +60,16 @@ header {
     align-items:center;
 }
 
+.likes {
+    filter: invert(26%) sepia(13%) saturate(3441%) hue-rotate(73deg) brightness(98%) contrast(98%);
+    color:black;
+}
+
+.dislikes {
+    filter: invert(10%) sepia(67%) saturate(6095%) hue-rotate(357deg) brightness(89%) contrast(96%);
+    color:black;
+}
+
 nav {
     display: grid;
     height: 100%;
@@ -69,7 +79,7 @@ nav {
         ". searchResult .";
     grid-template-rows: 1fr;
     grid-template-columns: 15% 25%;
-    background-color: #ffc506;
+    background-color: #8d1733;
 }
 
 #banner {
@@ -77,8 +87,7 @@ nav {
     color: white;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    width: 100vw;
+    width: 100%;
     z-index: 2;
     position: relative;
 }
@@ -86,11 +95,15 @@ nav {
 
 #bannerPoster {
     max-height: auto;
-    width: 90%;
 }
 
 .plot {
     width: 80%;
+}
+
+.plot p {
+    display: inline;
+    margin: 10px;
 }
 
 .expandPlot {
@@ -108,22 +121,31 @@ nav {
     outline: none;
 }
 
-#topList button {
-    color: #050046;
-}
 
+.posterContainer{
+    position:relative;
+    display:block;
+    width:100%;
+}
+.posterContainer img{
+    display:block;
+
+    width:100%;
+}
 .rank {
-    position: absolute;
+    position:absolute;
     top: 10px;
     right: 10px;
-    background-color: gray;
-    height: 25px;
-    width: 25px;
+    background-color: rgb(111 111 111 / 0.80);
+    height: 50px;
+    width: 50px;
+    font-size:30px;
     text-align: center;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     flex-direction: column;
+    border: solid 1px #787878
 }
 
 .ratings img {
@@ -148,17 +170,31 @@ nav {
 }
 
 #topList {
-    background-color: #ffc506;
-    color: black;
+    background-color: #1c1c1c;
+    color: white;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    align-items:center;
 }
 
 .movieContainer {
     width: 100vw;
-    background-color: #ffc506;
+    background-color: #1c1c1c;
     overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    border-bottom: solid 2px black;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    align-items:center;
+}
+
+.movieContainer a{
+    color:white;
+    text-decoration:none;
+    font-weight:bold;
+    font-size: 20px;
 }
 
 .icon {
@@ -190,7 +226,7 @@ footer {
 
 #logo {
     text-decoration: none;
-    color: orchid;
+    color: white;
     grid-area: logotype;
 }
 
@@ -216,20 +252,20 @@ footer {
     width: 100%;
 }
 
-    #searchContainerExpanded form {
-        display: block;
-        width: 100%;
-    }
+#searchContainerExpanded form {
+    display: block;
+    width: 100%;
+}
 
-        #searchContainerExpanded form input {
-            display: block;
-            height: 100%;
-            background-color: transparent;
-            font-size: 25px;
-            border: none;
-            margin: 0;
-            width: 80%;
-        }
+#searchContainerExpanded form input {
+    display: block;
+    height: 100%;
+    background-color: transparent;
+    font-size: 25px;
+    border: none;
+    margin: 0;
+    width: 80%;
+}
 
 #searchContainer form {
     display: none;
@@ -249,15 +285,15 @@ footer {
     z-index: -1;
 }
 
-    #burgermenu ul {
-        display: flex;
-        flex-direction: column;
-        height: 100%;
-        list-style: none;
-        justify-content: space-evenly;
-        padding: 0;
-        margin: 0 10px;
-    }
+#burgermenu ul {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    list-style: none;
+    justify-content: space-evenly;
+    padding: 0;
+    margin: 0 10px;
+}
 
 .navlink {
     padding-top: 10px;

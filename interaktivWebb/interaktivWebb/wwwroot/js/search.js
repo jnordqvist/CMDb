@@ -11,10 +11,16 @@ async function search() {
     div.innerHTML = ''
     let input = document.querySelector("#searchField").value;
     const response = await fetch(`${baseUrl}s=${input}${key}`).then(response => response.json())
-    console.log(response)
     if (response.Response === "True") {
         for (var movie in response.Search) {
             let currentMovie = response.Search[movie]
+            console.log(currentMovie.Poster)
+            
+
+            if (currentMovie.Poster == "N/A") {
+                currentMovie.Poster = "/images/cmdb.png"
+                console.log(currentMovie.Poster)
+            }
             let template =
                 `<a href="/DetailPage/Movies/${currentMovie.Title}">
                     <img src="${currentMovie.Poster}"/>
@@ -35,6 +41,9 @@ async function search() {
     else {
         const response = await fetch(`${baseUrl}t=${input}${key}`).then(response => response.json())
         if (response.Response != "False") {
+            if (response.Poster == "N/A") {
+                response.Poster = "/images/cmdb.png"
+            }
             let template =
                         `<a href="/DetailPage/Movies/${response.Title}">
                                 <img src="${response.Poster}"/>
@@ -62,7 +71,7 @@ const showSearchSuggestions = () => {
 const hideSearchSuggestions = () => {
     setTimeout(function () {
         div.style.display = "none"
-    },80)
+    },100)
 }
 
 let searchField = document.querySelector("#searchField")

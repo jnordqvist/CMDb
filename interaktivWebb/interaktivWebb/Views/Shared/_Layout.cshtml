@@ -12,7 +12,7 @@
     <Header>
         <nav>
             <img id="burger" src="~/images/burgerClosed.svg" />
-            <a id="logo" href="/Home/Index">CMDb</a>
+            <a id="logo" href=@Url.Action("Index", "Home")>CMDb</a>
             <div id="searchContainer">
                 <form asp-action="Movies" asp-controller="DetailPage" method="get">
                     <input id="searchField" name="id" type="text" placeholder="Search" required autocomplete="off" />
@@ -49,9 +49,9 @@
             <div id="previewSearch">
 
                 @*<a id="searchLink" asp-action="Movies" asp-controller="DetailPage" asp-route-id="">
-                <p id="previewTitle"></p>
-            </a>
-                <img id="previewImg" src="" />*@
+            <p id="previewTitle"></p>
+        </a>
+            <img id="previewImg" src="" />*@
 
             </div>
         </nav>

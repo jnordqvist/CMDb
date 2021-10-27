@@ -11,11 +11,13 @@ namespace interaktivWebb.Models.ViewModels
     {
         public List<OmdbMovieDto> Movies { get; }
         public IEnumerable<MovieDto> cmdbMovies { get; }
+        public OmdbMovieDto TopMovie { get; }
 
         public HomeViewModel(List<OmdbMovieDto> movies, IEnumerable<MovieDto> cmdbMovies)
         {
             Movies = movies;
             this.cmdbMovies = cmdbMovies;
+            TopMovie = movies[0];
 
             foreach (var movie in movies)
             {

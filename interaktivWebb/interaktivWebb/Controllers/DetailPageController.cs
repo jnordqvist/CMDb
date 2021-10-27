@@ -21,7 +21,7 @@ namespace interaktivWebb.Controllers
         }
         public async Task<IActionResult> Movies(string id)
         {
-            Regex reg = new Regex("^(tt[0-9]{7})$");
+            Regex reg = new Regex("^(tt[0-9]{7,9})$");
             if (reg.IsMatch(id))
             {
                 var movieInformation = await omdbRepository.GetMovieInformation(id);
