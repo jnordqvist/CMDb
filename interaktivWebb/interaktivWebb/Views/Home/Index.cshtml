@@ -8,13 +8,11 @@
    
     <section id="banner">
 
-
-
         @Html.ActionLink(@Model.Movies[0].Title, "Movies", "DetailPage", null, null, null, new { id = @Model.Movies[0].imdbId }, null)
-        <img src="@Html.DisplayFor(model=>model.Movies[0].poster)" />
+        <img src="@Html.DisplayFor(model=>model.Movies[0].poster)" id="bannerPoster" />
         @if (@Model.Movies[0].plot.Length >= 50)
         {
-            <div><p>@Model.Movies[0].plot.Substring(0, 50)...</p><p style="display: none">@Model.Movies[0].plot</p><button class="expandPlot">Read More</button></div>
+            <div class="plot"><p>@Model.Movies[0].plot.Substring(0, 50)...<button class="expandPlot">Read More &darr;</button></p><p style="display: none">@Model.Movies[0].plot<button class="expandPlot">Read Less &uarr;</button></p></div>
         }
         else
         {
@@ -23,9 +21,8 @@
         }
         @foreach (var rating in Model.Movies[0].ratings)
         {
-            <div>
-                <p>@($"~/images/{rating.Source}.png")</p>
-                <img src=@($"~/images/{rating.Source}.png") />
+            <div class="ratingContainer">
+                <img src="@Url.Content(String.Format("~/images/{0}.png", rating.Source))" class="icon" />
                 <p>@rating.Source:</p>
                 <p>@rating.Value</p>
             </div>
@@ -33,6 +30,9 @@
         <div class="rank"></div>
 
     </section>
+
+    <!-----------------------------------------------------------LOOOP----------------------------------------------------------------------------------->
+
     <section id="topList">
         @foreach (var movie in Model.Movies.Skip(1))
         {
@@ -41,23 +41,32 @@
             <p class="likes">@Model.cmdbMovies.Where(x => x.imdbID == movie.imdbId).First().numberOfLikes</p>
             @if (@movie.plot.Length >= 50)
             {
-                <div><p>@movie.plot.Substring(0, 50)...</p><p style="display: none">@movie.plot</p><button class="expandPlot">Read More</button></div>
+                <div class="plot"><p>@movie.plot.Substring(0, 50)...<button class="expandPlot">Read More &darr;</button></p><p style="display: none">@movie.plot<button class="expandPlot">Read Less &uarr;</button></p></div>
+            }
+            else if (@movie.plot.Length < 50 && @movie.plot.Length > 3)
+            {
+                <div><p>@movie.plot</p></div>
             }
             else
             {
-                <div><p>@movie.plot</p></div>
+                <div><p>Plot for @movie.Title is not available</p></div>
 
             }
             @if (movie.poster != "N/A")
             {
                 <img src="@movie.poster" />
             }
+            else
+            {
+                <img src="~/images/cmdb.png" />
+            }
             @foreach (var rating in movie.ratings)
             {
-                <div>
-                    <p>@rating.Source:</p>
-                    <p>@rating.Value</p>
-                </div>
+            <div class="ratingContainer">
+                <img src="@Url.Content(String.Format("~/images/{0}.png", rating.Source))" class="icon" />
+                <p>@rating.Source:</p>
+                <p>@rating.Value</p>
+            </div>
             }
 
 

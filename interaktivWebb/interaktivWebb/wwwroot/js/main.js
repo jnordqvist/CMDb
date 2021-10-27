@@ -2,23 +2,24 @@
 const expandPlot = () => {
     
     var target = event.target
-    var parent = target.parentNode
+    var parent = target.parentNode.parentNode
     console.log("target")
 
     console.log(parent.childNodes)
     console.log(parent.firstChild)
     console.log(parent.childNodes[1])
 
-    if (parent.lastChild.textContent == "Read More") {
+    if (parent.lastChild.style.display == "none") {
 
         parent.firstChild.style.display = "none"
-        parent.childNodes[1].style.display = "flex"
-        parent.lastChild.textContent = "Read Less"
+        parent.lastChild.style.display = "inline"
+        parent.lastChild.lastChild.style.marginLeft = "5px"
+        
     }
     else {
-        parent.firstChild.style.display = "flex"
-        parent.childNodes[1].style.display = "none"
-        parent.lastChild.textContent = "Read More"
+        parent.firstChild.style.display = "inline"
+        parent.lastChild.style.display = "none"
+        
     }
     
     

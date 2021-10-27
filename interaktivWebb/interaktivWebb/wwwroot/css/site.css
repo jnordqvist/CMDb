@@ -73,7 +73,7 @@ nav {
 }
 
 #banner {
-    background-color: #ffcccc;
+    background-color: #0e0e0e;
     color: white;
     display: flex;
     flex-direction: column;
@@ -83,16 +83,33 @@ nav {
     position: relative;
 }
 
-#banner div {
-    max-width: 80%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+
+#bannerPoster {
+    max-height: auto;
+    width: 90%;
 }
 
-#banner img {
-    max-height: auto;
-    max-width: 250px;
+.plot {
+    width: 80%;
+}
+
+.expandPlot {
+    background-color: transparent;
+    border: none;
+    color: #b6c4f2;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+    display: inline;
+    font-weight: 700;
+}
+
+.expandPlot:focus {
+    outline: none;
+}
+
+#topList button {
+    color: #050046;
 }
 
 .rank {
@@ -144,8 +161,9 @@ nav {
     overflow:hidden;
 }
 
-.movieContainer img{
-    max-height: 300px;
+.icon {
+    max-height: 15px;
+    width: auto;
 }
 
 #c {
@@ -255,6 +273,10 @@ footer {
 @media (min-width: 600px) {
     footer {
         background-color: green;
+    }
+    #banner {
+        height: auto;
+        width: 75%;
     }
 }
 
