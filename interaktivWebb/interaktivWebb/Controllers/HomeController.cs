@@ -49,13 +49,14 @@ namespace interaktivWebb.Controllers
             movies = movies.OrderByDescending(o => o.numberOfLikes);
 
             List<string> sortedMovies = new List<string>();
+            List<string> genres = new List<string>();
 
             var allMovies = new List<OmdbMovieDto>();
             foreach (var movie in movies)
             {
                 sortedMovies.Add(movie.imdbID);
                 var result = omdbRepository.GetMovieInformation(movie.imdbID);
-                allMovies.Add(result.Result);
+                allMovies.Add(result.Result);                
                 tasks.Add(result);
             }
             await Task.WhenAll(tasks);

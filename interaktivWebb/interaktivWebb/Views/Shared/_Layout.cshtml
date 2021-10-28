@@ -20,42 +20,43 @@
                 <img id="search" src="~/images/magnifyingGlass.svg" />
             </div>
             <div id="burgermenu">
+                
                 <ul>
-                    <li>
-                        <a class="navlink" href="#">Hi</a>
-                    </li>
-                    <li>
-                        <a class="navlink" href="#">Helllo</a>
-                    </li>
-                    <li>
-                        <a class="navlink" href="#">Henlo</a>
-                    </li>
+                   <h3>Genres</h3> 
+                    @{
+                        string[] genres = new string[] { "Comedy", "Action", "Sci-fi", "Fantasy", "Drama", "Documentary", "Adventure", "Romance" };
+                        foreach (var genre in genres)
+                        {
+                            <li>
+                                <a href="@Url.Action("Genre", "Filter", new { id = genre})">@genre</a>
+                            </li>
+                        }
+                    }
                 </ul>
-
             </div>
             <div id="navlinks">
                 <ul>
-                    <li>
-                        <a class="navlink" href="#">Hi</a>
-                    </li>
-                    <li>
-                        <a class="navlink" href="#">Helllo</a>
-                    </li>
-                    <li>
-                        <a class="navlink" href="#">Henlo</a>
-                    </li>
+                    @{
+
+                        foreach (var genre in genres)
+                        {
+                            <li>
+                                <a href="@Url.Action("Genre", "Filter", new { id = genre})">@genre</a>
+                            </li>
+                        }
+                    }
                 </ul>
             </div>
             <div id="previewSearch">
 
                 @*<a id="searchLink" asp-action="Movies" asp-controller="DetailPage" asp-route-id="">
-            <p id="previewTitle"></p>
-        </a>
-            <img id="previewImg" src="" />*@
+                        <p id="previewTitle"></p>
+                    </a>
+                        <img id="previewImg" src="" />*@
 
             </div>
         </nav>
-        
+
     </Header>
 
     <div class="container">
@@ -69,10 +70,11 @@
             <img src="~/images/phone.svg"> <a href="tel: 1111111">1111111</a>
         </address>
     </footer>
-    
+
     <script src="~/js/search.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/burger.js"></script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

@@ -18,7 +18,11 @@
             <a class="actorLink" href=@Url.Action("Actor", "Filter", new { id = actor })>@actor</a>
         }
         <h2 id="runtime">@Html.DisplayFor(model => model.movie.runtime)</h2>
-        <h3 id="genre">@Html.DisplayFor(model => model.movie.genre)</h3>
+        @foreach (var genre in Model.genreList)
+        {
+            <a class="genre" href="@Url.Action("Genre", "Filter", new { id = genre})">@genre</a>
+        }
+        @*<h3 id="genre">@Html.DisplayFor(model => model.movie.genre)</h3>*@
         <div class="ratings">
             <div class="ratingContainer" id="cmdbRating">
                 <p>CMDb: </p>
@@ -60,4 +64,4 @@
 </section>
 
 
-<script src="~/js/site.js" asp-append-version="true"></script>
+<script src="~/js/detailPage.js" asp-append-version="true"></script>

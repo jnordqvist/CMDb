@@ -8,32 +8,32 @@
    
     <section id="banner">
 
-        @Html.ActionLink(@Model.Movies[0].Title, "Movies", "DetailPage", null, null, null, new { id = @Model.Movies[0].imdbId }, null)
+        <a id="title" href="@Url.Action("Movies", "DetailPage", new { id = Model.TopMovie.imdbId })">@Model.TopMovie.Title</a>
 
-        <a href=@Url.Action("Movies", "DetailPage", new { id = Model.Movies[0].imdbId })>
+        <a id="img" href=@Url.Action("Movies", "DetailPage", new { id = Model.TopMovie.imdbId })>
             <div class="posterContainer">
-                <img src="@Html.DisplayFor(model=>model.Movies[0].poster)" />
+                <img src="@Html.DisplayFor(model=>model.TopMovie.poster)" />
                 <div class="rank"></div>
             </div>
         </a>
         <div id="topMovieContent">
-            @if (@Model.Movies[0].plot.Length >= 50)
+            @if (@Model.TopMovie.plot.Length >= 50)
             {
-                <div class="plot"><p>@Model.Movies[0].plot.Substring(0, 50)...<button class="expandPlot">Read More &darr;</button></p><p style="display: none">@Model.TopMovie.plot<button class="expandPlot">Read Less &uarr;</button></p></div>
+                <div class="plot"><p>@Model.TopMovie.plot.Substring(0, 50)...<button class="expandPlot">Read More &darr;</button></p><p style="display: none">@Model.TopMovie.plot<button class="expandPlot">Read Less &uarr;</button></p></div>
             }
             else
             {
-                <div><p>@Model.Movies[0].plot</p></div>
+                <div><p>@Model.TopMovie.plot</p></div>
 
             }
 
             <div class="ratingContainer">
                 <img />
                 <p>CMDb: </p>
-                <img class="likes" src="~/images/ThumbUp.svg" /><p class="likes">@Model.cmdbMovies.Where(x => x.imdbID == Model.Movies[0].imdbId).First().numberOfLikes </p>
-                <img class="dislikes" src="~/images/ThumbDown.svg" /><p class="dislikes">@Model.cmdbMovies.Where(x => x.imdbID == Model.Movies[0].imdbId).First().numberOfDislikes </p>
+                <img class="likes" src="~/images/ThumbUp.svg" /><p class="likes">@Model.cmdbMovies.Where(x => x.imdbID == Model.TopMovie.imdbId).First().numberOfLikes </p>
+                <img class="dislikes" src="~/images/ThumbDown.svg" /><p class="dislikes">@Model.cmdbMovies.Where(x => x.imdbID == Model.TopMovie.imdbId).First().numberOfDislikes </p>
             </div>
-            @foreach (var rating in Model.Movies[0].ratings)
+            @foreach (var rating in Model.TopMovie.ratings)
             {
                 <div class="ratingContainer">
                     <img src="@Url.Content(String.Format("~/images/{0}.png", rating.Source.Replace(' ', '_')))" class="icon" />

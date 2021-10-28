@@ -1,0 +1,62 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+@model GenreViewModel
+
+<h1>Movies in cmdb accoring to @Model.Genre</h1>
+@foreach (var movie in Model.filteredOmdbMovies)
+{
+    <div class="movieContainer">
+
+        @Html.ActionLink(@movie.Title, "Movies", "DetailPage", null, null, null, new { id = @movie.imdbId }, null)
+
+
+        @if (movie.poster != "N/A")
+        {
+            <a href=@Url.Action("Movies", "DetailPage", new { id = movie.imdbId })>
+
+                <div class="posterContainer">
+                    <img src="@movie.poster" />
+                    <div class="rank"></div>
+                </div>
+            </a>
+        }
+        else
+        {
+            <img src="~/images/cmdb.png" />
+        }
+
+        @if (@movie.plot.Length >= 50)
+        {
+            <div class="plot"><p>@movie.plot.Substring(0, 50)...<button class="expandPlot">Read More &darr;</button></p><p style="display: none">@movie.plot<button class="expandPlot">Read Less &uarr;</button></p></div>
+        }
+        else if (@movie.plot.Length < 50 && @movie.plot.Length > 3)
+        {
+            <div><p>@movie.plot</p></div>
+        }
+        else
+        {
+            <div><p>Plot for @movie.Title is not available</p></div>
+
+        }
+
+        <div class="ratingContainer">
+            <img />
+            <p>CMDb: </p>
+            <p class="likes"><img class="filter-green" src="~/images/ThumbUp.svg" />@Model.filteredCmdbMovies.Where(x => x.imdbID == movie.imdbId).First().numberOfLikes </p>
+            <p class="dislikes"><img class="filter-red" src="~/images/ThumbDown.svg" />@Model.filteredCmdbMovies.Where(x => x.imdbID == movie.imdbId).First().numberOfDislikes </p>
+        </div>
+
+        @foreach (var rating in movie.ratings)
+        {
+            <div class="ratingContainer">
+                <img src="@Url.Content(String.Format("~/images/{0}.png", rating.Source))" class="icon" />
+                <p>@rating.Source:</p>
+                <p>@rating.Value</p>
+            </div>
+        }
+
+    </div>
+}

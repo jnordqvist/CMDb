@@ -22,11 +22,28 @@ namespace interaktivWebb.Controllers
 
         public async Task<IActionResult> Actor(string id)
         {
-            var model = await getModel(id);
+            var tasks = new List<Task>();
+            var movies = await cmdbRepository.GetMovies();
+            movies = movies.OrderByDescending(o => o.numberOfLikes);
+
+            List<string> sortedMovies = new List<string>();
+
+            var allMovies = new List<OmdbMovieDto>();
+            foreach (var movie in movies)
+            {
+                sortedMovies.Add(movie.imdbID);
+                var result = omdbRepository.GetMovieInformation(movie.imdbID);
+                allMovies.Add(result.Result);
+                tasks.Add(result);
+            }
+            await Task.WhenAll(tasks);
+
+            allMovies = allMovies.OrderBy(x => sortedMovies.IndexOf(x.imdbId)).ToList();
+            var model = new ActorViewModel(allMovies, movies, id);
             return View(model);
         }
 
-        private async Task<ActorViewModel> getModel(string actor)
+        public async Task<IActionResult> Genre(string id)
         {
             var tasks = new List<Task>();
             var movies = await cmdbRepository.GetMovies();
@@ -45,7 +62,10 @@ namespace interaktivWebb.Controllers
             await Task.WhenAll(tasks);
 
             allMovies = allMovies.OrderBy(x => sortedMovies.IndexOf(x.imdbId)).ToList();
-            return new ActorViewModel(allMovies, movies, actor);
+            var model = new GenreViewModel(allMovies, movies, id);
+            
+            return View(model);
         }
+
     }
 }

@@ -138,7 +138,6 @@ nav {
 }
 .posterContainer img{
     display:block;
-
     width:100%;
 }
 .rank {
@@ -285,11 +284,12 @@ footer {
 
 #burgermenu {
     position: absolute;
-    top: -50px;
-    height: 100px;
+    top: 50px;
+    left: -100%;
+    height: auto;
     width: 100%;
-    background-color: black;
-    transition: top 0.3s ease-in-out;
+    background-color: #8d1733;
+    transition: left 0.3s ease-in-out;
     z-index: -1;
 }
 
@@ -303,6 +303,16 @@ footer {
     margin: 0 10px;
 }
 
+
+#burgermenu h3, li {
+    margin: 10px; 
+}
+
+#burgermenu a {
+    text-decoration: none;
+    font-weight: 600;
+    color: #eeccd9;
+}
 .navlink {
     padding-top: 10px;
     font-size: 20px;
@@ -318,9 +328,21 @@ footer {
     footer {
         background-color: green;
     }
-    #banner {
+    #banner .posterContainer {
+        width: 80%;
         height: auto;
-        width: 75%;
+        margin-left: 10%;
+    }
+    #topMovieContent {
+        margin-left: 10%;
+        font-size: 20px;
+    }
+    #banner a {
+        text-align: center;
+    }
+
+    #topList {
+        font-size: 18px;
     }
 }
 
@@ -340,7 +362,7 @@ footer {
     nav {
         grid-template-areas:
             "logotype navlinks search";
-        grid-template-columns: 15% 40% 45%;
+        grid-template-columns: 15% 40%;
     }
 
     #navlinks {
@@ -397,6 +419,92 @@ footer {
     .moviePreviewTextContainer {
         flex-direction: row;
         align-items: center;
+    }
+
+    #banner {
+        
+        display: flex;
+        flex-direction: row;
+        width: 100%;
+        height: 800px;
+        justify-content: left;
+    }
+
+    #topMovieContent {
+        padding: 20px;
+    }
+
+    .plot {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+        .plot p {
+            display: inline;
+        }
+
+    .expandPlot {
+        background-color: transparent;
+        border: none;
+        color: #b6c4f2;
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        display: inline;
+        font-weight: 700;
+    }
+
+        .expandPlot:focus {
+            outline: none;
+        }
+
+
+    .posterContainer {
+        position: relative;
+        display: block;
+        height: 100%;
+    }
+
+        .posterContainer img {
+            display: block;
+            width: auto;
+            height: 800px;
+        }
+
+    .rank {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        background-color: rgb(111 111 111 / 0.80);
+        height: 50px;
+        width: 50px;
+        font-size: 30px;
+        text-align: center;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        border: solid 1px #787878
+    }
+
+    .ratings img {
+        width: auto;
+        max-height: 15px;
+        margin: 0px 5px;
+    }
+
+    .ratingContainer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+
+    #banner a {
+        text-decoration: none;
+        color: White;
+        font-size: 25px;
+        font-weight: 900;
     }
 }
 
