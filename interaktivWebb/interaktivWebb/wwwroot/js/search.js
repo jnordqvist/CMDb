@@ -1,11 +1,42 @@
 ﻿////let title = document.querySelector("#previewTitle");
 ////let poster = document.querySelector("#previewImg");
 /*let link = document.querySelector("#searchLink");*/
-
+let searching = false
 let div = document.querySelector("#previewSearch");
 const baseUrl = "https://www.omdbapi.com/?";
 const key = "&apikey=f44c5f0a";
 
+let magnifyingGlass = document.querySelector("#search")
+
+function openSearch() {
+    let container = document.querySelector("#searchContainer")
+    container.id = 'searchContainerExpanded'
+    document.querySelector("#search").src = "/images/close.svg"
+    document.querySelector("#searchField").focus()
+    searching = true
+}
+
+function closeSearch() {
+    let container = document.querySelector("#searchContainerExpanded")
+    container.id = 'searchContainer'
+    document.querySelector("#search").src = "/images/magnifyingGlass.svg"
+    searching = false
+}
+
+function toggleSearch() {
+    let x = window.matchMedia("(max-width : 999px)")
+    console.log(x.matches)
+    if (x.matches) {
+        if (searching) {
+            return closeSearch()
+        }
+        else {
+            return openSearch()
+        }
+    }
+}
+
+magnifyingGlass.addEventListener("click", toggleSearch)
 
 async function search() {
     div.innerHTML = ''
@@ -14,22 +45,19 @@ async function search() {
     if (response.Response === "True") {
         for (var movie in response.Search) {
             let currentMovie = response.Search[movie]
-            console.log(currentMovie.Poster)
-            
 
             if (currentMovie.Poster == "N/A") {
                 currentMovie.Poster = "/images/cmdb.png"
-                console.log(currentMovie.Poster)
             }
             let template =
-                `<a href="/DetailPage/Movies/${currentMovie.Title}">
+                `<a href="/DetailPage/Movies/${currentMovie.imdbID}">
                     <img src="${currentMovie.Poster}"/>
                 </a>
                 <div class="moviePreviewTextContainer">
-                <a href="/DetailPage/Movies/${currentMovie.Title}">
-                    <h1>${currentMovie.Title}</h1>
-                </a>
-                <h2>(${currentMovie.Year})</h2>
+                    <a href="/DetailPage/Movies/${currentMovie.imdbID}">
+                        <h1>${currentMovie.Title}</h1>
+                    </a>
+                    <h2>(${currentMovie.Year})</h2>
                 </div>
                 `
             let innerDiv = document.createElement("div")

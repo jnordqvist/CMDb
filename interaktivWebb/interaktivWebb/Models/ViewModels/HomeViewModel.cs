@@ -19,14 +19,6 @@ namespace interaktivWebb.Models.ViewModels
             this.cmdbMovies = cmdbMovies;
             TopMovie = movies[0];
 
-            foreach (var movie in movies)
-            {
-                foreach (var rating in movie.ratings)
-                {
-                    string trimmed = Regex.Replace(rating.Source, @" ", "");
-                    rating.Source = trimmed;
-                }
-            }
         }
     }
 }

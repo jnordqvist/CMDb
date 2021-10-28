@@ -13,9 +13,16 @@
     height: auto;
 }
 
+.plot{
+    width:100%;
+}
+
+#detailContainer{
+    padding:20px;
+}
+
 #director {
     font-size: 16px;
-    color:green;
 }
 
 #releaseDate {
@@ -24,6 +31,12 @@
 
 #runtime {
     font-size: 15px;
+}
+
+.actorLink {
+    color: #b6c4f2;
+    text-decoration: none;
+    display: block;
 }
 
 

@@ -8,20 +8,52 @@
 <link href="~/css/detailPage.css" rel="stylesheet" />
 <section id="movieContainer">
     <img class="poster" src="@Model.movie.poster" />
-    <div class="spinnerContent">
-        <p>likes: <p id="likes">@Html.DisplayFor(model => model.cmdbMovie.numberOfLikes)</p></p>
-        <p>dislikes: <p id="dislikes"> @Html.DisplayFor(model => model.cmdbMovie.numberOfDislikes)</p></p>
-        <h1 class="title">title</h1>
-        <h2 id="director">@Html.DisplayFor(model => model.movie.director)</h2>
-        <h2 id="releaseDate"></h2>
-        <p class="plot"></p>
-        <h2 id="runtime"></h2>
-        <h3 id="genre"></h3>
-        <h3 id="actors"></h3>
+    <div id="detailContainer">
+        <h1 class="title">@Html.DisplayFor(model => model.movie.Title) (@Html.DisplayFor(model => model.movie.year))</h1>
+        <h2 id="director">Directed by: @Html.DisplayFor(model => model.movie.director)</h2>
+        <p class="plot">@Html.DisplayFor(model => model.movie.plot)</p>
+        <h2>Cast:</h2>
+        @foreach (var actor in Model.actorList)
+        {
+            <a class="actorLink" href=@Url.Action("Actor", "Filter", new { id = actor })>@actor</a>
+        }
+        <h2 id="runtime">@Html.DisplayFor(model => model.movie.runtime)</h2>
+        <h3 id="genre">@Html.DisplayFor(model => model.movie.genre)</h3>
         <div class="ratings">
+            <div class="ratingContainer" id="cmdbRating">
+                <p>CMDb: </p>
+                @if (Model.cmdbMovie != null)
+                {
+                    <p class="likes"><img class="filter-green" src="~/images/ThumbUp.svg" />@Model.cmdbMovie.numberOfLikes </p>
+                    <p class="dislikes"><img class="filter-red" src="~/images/ThumbDown.svg" />@Model.cmdbMovie.numberOfDislikes </p>
+                }
+                else
+                {
+                    <p class="likes"><img class="filter-green" src="~/images/ThumbUp.svg" />0</p>
+                    <p class="dislikes"><img class="filter-red" src="~/images/ThumbDown.svg" />0</p>
+                }
+            </div>
+
+            @foreach (var rating in Model.movie.ratings)
+            {
+                <div class="ratingContainer">
+                    <img src="@Url.Content(String.Format("~/images/{0}.png", rating.Source.Replace(' ', '_')))" class="icon" />
+                    <p>@rating.Source:</p>
+                    <p>
+                        @rating.Value
+                        @if (rating.Source == "Internet Movie Database")
+                        {
+                        <p> (@Model.movie.imdbVotes)</p>
+                    }
+                        </p>
+                    </div>
+                }
         </div>
-        <h3 id="awards"></h3>
-        <div class="rank"></div>
+
+        <h2 id="releaseDate">@Html.DisplayFor(model => model.movie.released)</h2>
+        <p>@Html.DisplayFor(model => model.movie.boxOffice)</p>
+
+        <h3 id="awards">@Html.DisplayFor(model => model.movie.awards)</h3>
         <button id="likeBtn" value="@Model.movie.imdbId">Like</button>
         <button id="dislikeBtn" value="@Model.movie.imdbId">Dislike</button>
     </div>

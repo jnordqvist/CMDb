@@ -17,6 +17,9 @@ namespace interaktivWebb.Models.Dtos.Omdb
         public string awards { get; set; }
         public string runtime { get; set; }
         public string poster { get; set; }
+        public string released { get; set; }
+        public string imdbVotes { get; set; }
+        public string boxOffice { get; set; }
         public List<RatingSourceDto> ratings { get; set; }
     }
 }

@@ -15,7 +15,7 @@ async function likeMovie() {
     const id = document.querySelector("#likeBtn").value
     const response = await fetch(`${baseUrlCmdb}/${id}/like`).then(response => response.json())
 
-    document.querySelector("#likes").textContent = response.numberOfLikes
+    document.querySelector(".likes").childNodes[1].textContent = response.numberOfLikes
     document.querySelector("#likeBtn").disabled = false
 }
 
@@ -24,7 +24,7 @@ async function dislikeMovie() {
     const id = document.querySelector("#likeBtn").value
     const response = await fetch(`${baseUrlCmdb}/${id}/dislike`).then(response => response.json())
 
-    document.querySelector("#dislikes").textContent = response.numberOfDislikes
+    document.querySelector(".dislikes").childNodes[1].textContent = response.numberOfDislikes
     document.querySelector("#dislikeBtn").disabled = false
 }
 

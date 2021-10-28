@@ -5,7 +5,7 @@ body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    background-color: #000;
+    background-color: #1c1c1c;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -24,16 +24,17 @@ header {
     z-index: 5;
 }
 
-#previewSearch {
-    position:absolute;
-    width: 45%;
-    top:50px;
-    left: 55%;
-    display:flex;
-    height:auto;
-    background-color: #1c1c1c; 
-    flex-direction:column;
+#previewSearch
+{
+    position: absolute;
+    top: 50px;
+    display: flex;
+    height: auto;
+    background-color: #1c1c1c;
+    flex-direction: column;
+
 }
+
 #previewSearch a{
     text-decoration:none;
     color:white;
@@ -57,7 +58,11 @@ header {
 
 .moviePreviewTextContainer{
     display:flex;
-    align-items:center;
+    flex-direction:column;
+}
+
+.moviePreviewTextContainer a, h1{
+    margin:0;
 }
 
 .likes {
@@ -97,13 +102,17 @@ nav {
     max-height: auto;
 }
 
+#topMovieContent{
+    padding: 20px;
+}
+
 .plot {
-    width: 80%;
+    width: 100%;
+    margin-top:10px;
 }
 
 .plot p {
     display: inline;
-    margin: 10px;
 }
 
 .expandPlot {
@@ -179,7 +188,6 @@ nav {
 }
 
 .movieContainer {
-    width: 100vw;
     background-color: #1c1c1c;
     overflow:hidden;
     display:flex;
@@ -187,7 +195,7 @@ nav {
     border-bottom: solid 2px black;
     margin-bottom: 10px;
     margin-top: 10px;
-    align-items:center;
+    padding:20px;
 }
 
 .movieContainer a{
@@ -366,8 +374,6 @@ footer {
         width:100%
     }
 
-        
-
     #searchContainer form input {
         display: inline;
         height: 50%;
@@ -376,6 +382,21 @@ footer {
         border: none;
         margin: 0;
         width: 80%;
+    }
+
+    #previewSearch {
+        position: absolute;
+        width: 45%;
+        top: 50px;
+        left: 55%;
+        display: flex;
+        height: auto;
+        background-color: #1c1c1c;
+        flex-direction: column;
+    }
+    .moviePreviewTextContainer {
+        flex-direction: row;
+        align-items: center;
     }
 }
 

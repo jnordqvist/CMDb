@@ -1,7 +1,6 @@
 ﻿let rankings = document.querySelectorAll(".rank")
 let rankNr = 1
 for (var rank in rankings) {
-    console.log(rankings[rank])
     rankings[rank].innerHTML = String(rankNr)
     rankNr += 1
 }
@@ -10,11 +9,6 @@ const expandPlot = () => {
     
     var target = event.target
     var parent = target.parentNode.parentNode
-    console.log("target")
-
-    console.log(parent.childNodes)
-    console.log(parent.firstChild)
-    console.log(parent.childNodes[1])
 
     if (parent.lastChild.style.display == "none") {
 
@@ -28,11 +22,9 @@ const expandPlot = () => {
         parent.lastChild.style.display = "none"
         
     }
-    
-    
-   
 }
 
 let links = document.querySelectorAll(".expandPlot")
 links.forEach(element => element.addEventListener("click", expandPlot))
+
 

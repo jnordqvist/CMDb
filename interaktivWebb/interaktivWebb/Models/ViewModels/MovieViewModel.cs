@@ -10,10 +10,12 @@ namespace interaktivWebb.Models.ViewModels
     {
         public OmdbMovieDto movie { get; }
         public MovieDto cmdbMovie { get; }
+        public List<string> actorList { get; }
         public MovieViewModel(OmdbMovieDto movie, MovieDto cmdbMovie)
         {
             this.movie = movie;
             this.cmdbMovie = cmdbMovie;
+            actorList = movie.actors.Split(", ").ToList();
         }
     }
 }
