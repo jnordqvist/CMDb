@@ -78,13 +78,15 @@ header {
 nav {
     display: grid;
     height: 100%;
+    width: 100%;
     align-items: center;
     grid-template-areas:
         "burger logotype search"
         ". searchResult .";
     grid-template-rows: 1fr;
-    grid-template-columns: 15% 25%;
+    grid-template-columns: 15% 55% 30%;
     background-color: #8d1733;
+    justify-content: right;
 }
 
 #banner {
@@ -235,6 +237,7 @@ footer {
     text-decoration: none;
     color: white;
     grid-area: logotype;
+    margin-left: 5px;
 }
 
 #burger {
@@ -273,6 +276,10 @@ footer {
     margin: 0;
     width: 80%;
 }
+
+    ::placeholder {
+        color: #c15e7a;
+    }
 
 #searchContainer form {
     display: none;
@@ -328,7 +335,7 @@ footer {
     footer {
         background-color: green;
     }
-    #banner .posterContainer {
+    #img{
         width: 80%;
         height: auto;
         margin-left: 10%;
@@ -359,15 +366,30 @@ footer {
         display: none;
     }
 
+    header {
+        height: 80px;
+    }
+
     nav {
         grid-template-areas:
-            "logotype navlinks search";
-        grid-template-columns: 15% 40%;
+            "logotype . search"
+            "navlinks navlinks navlinks";
+        grid-template-columns: 5% 70% 25%;
+        grid-template-rows: 50px 30px;
+    }
+    
+    #search {
+        height: 35px;
+        width: auto;
+        margin-right: 10px;
     }
 
     #navlinks {
         display: inline;
         grid-area: navlinks;
+        height: 100%;
+        background-color: #B52144;
+        border-top: 2px solid #D44566;
     }
 
     #navlinks ul {
@@ -382,18 +404,30 @@ footer {
         justify-content: space-evenly;
     }
 
+        #navlinks a {
+            text-decoration: none;
+            color: #E76A87;
+            font-weight: 700;
+        }
+
+        #navlinks a:hover {
+            color: #f8e3ea;
+        }
+
     #searchContainer {
         display: flex;
-        height: 50px;
-        background-color: bisque;
+        height: 100%;
+        background-color: transparent;
         justify-content: right;
+        align-items: center;
         width: 100%;
     }
 
     #searchContainer form {
         display: flex;
         align-items:center;
-        width:100%
+        width:100%;
+        justify-content: right;
     }
 
     #searchContainer form input {
@@ -422,71 +456,48 @@ footer {
     }
 
     #banner {
-        
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: 50% 50%;
+        grid-template-rows: 10% 90%;
+        grid-template-areas: 
+            "img title"
+            "img details";
         width: 100%;
-        height: 800px;
-        justify-content: left;
+        height: auto;
+    }
+    #title {
+        grid-area: title;
+        margin-top: 20px;
     }
 
     #topMovieContent {
+        grid-area: details;
         padding: 20px;
+        margin-left: 0;
     }
 
-    .plot {
-        width: 100%;
-        margin-top: 10px;
-    }
-
-        .plot p {
-            display: inline;
-        }
-
-    .expandPlot {
-        background-color: transparent;
-        border: none;
-        color: #b6c4f2;
-        cursor: pointer;
-        margin: 0;
-        padding: 0;
-        display: inline;
-        font-weight: 700;
-    }
-
-        .expandPlot:focus {
-            outline: none;
-        }
-
-
-    .posterContainer {
+    #img {
         position: relative;
-        display: block;
         height: 100%;
-    }
-
-        .posterContainer img {
-            display: block;
-            width: auto;
-            height: 800px;
-        }
-
-    .rank {
-        position: absolute;
-        top: 10px;
-        right: 10px;
-        background-color: rgb(111 111 111 / 0.80);
-        height: 50px;
-        width: 50px;
-        font-size: 30px;
-        text-align: center;
-        border-radius: 50%;
+        min-width: 400px;
+        margin-left: 0;
+        grid-area: img;
         display: flex;
+        align-items: center;
         justify-content: center;
-        flex-direction: column;
-        border: solid 1px #787878
     }
 
+        #img a {
+            margin: 40px;
+            height: auto;
+            width: 100%;
+            min-width: 400px;
+            background-color: red;
+        }
+    
+    #img .rank {
+        margin: 40px;
+    }
     .ratings img {
         width: auto;
         max-height: 15px;
@@ -505,6 +516,59 @@ footer {
         color: White;
         font-size: 25px;
         font-weight: 900;
+    }
+
+    #topList {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        grid-auto-rows: auto;
+        width:100%;
+        margin-top: 20px;
+    }
+
+    .movieContainer {
+        height: 800px;
+        padding: 0;
+        margin: 0 20px;
+        overflow-y: scroll;
+    }
+    .movieContainer::-webkit-scrollbar {
+        display:none;
+    }
+
+    .posterContainer {
+        overflow: hidden;
+        height: auto;
+        width: 80%;
+    }
+
+    #topList .posterContainer img {
+        transition: all .3s ease-in;
+
+    }
+    .movieContainer a img:hover {
+        transform: scale(1.02);
+        filter: grayscale(100%)
+    }
+
+    .icon {
+        max-height: 15px;
+        width: auto;
+    }
+
+    @media screen and (min-width: 1400px) {
+        #img a {
+            margin:100px;
+        }
+
+        #topMovieContent {
+            padding:20px 100px 20px 20px;
+        }
+
+        #img .rank {
+            margin: 100px;
+        }
     }
 }
 
