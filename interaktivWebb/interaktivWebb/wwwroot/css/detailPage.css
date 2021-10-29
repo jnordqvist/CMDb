@@ -1,7 +1,9 @@
-﻿
+﻿html{
+    height:100%;
+}
 #movieContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
     color: white;
 }
 
@@ -33,10 +35,45 @@
     font-size: 15px;
 }
 
-.actorLink {
+.actorLink, .genreLink {
     color: #b6c4f2;
     text-decoration: none;
     display: block;
 }
 
+#ratingCircle {
+    width: 50px;
+    height: 50px;
+}
 
+
+@media screen and (min-width: 1000px) {
+    #movieContainer {
+        display: grid;
+        height:100vh;
+        grid-template-areas:
+            ". poster details"
+            ". ratings details";
+        grid-template-rows: 1fr 60%;
+        grid-template-columns: 300px 25% 500px;
+        color: white;
+    }
+
+    .poster {
+        grid-area: poster;
+        width: auto;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        max-height: 300px;
+        margin:5%;
+    }
+
+    #detailContainer {
+        grid-area: details;
+        padding: 20px;
+    }
+    .ratings{
+        grid-area:ratings;
+    }
+}

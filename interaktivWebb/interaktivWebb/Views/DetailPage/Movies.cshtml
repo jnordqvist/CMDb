@@ -20,39 +20,10 @@
         <h2 id="runtime">@Html.DisplayFor(model => model.movie.runtime)</h2>
         @foreach (var genre in Model.genreList)
         {
-            <a class="genre" href="@Url.Action("Genre", "Filter", new { id = genre})">@genre</a>
+            <a class="genreLink" href="@Url.Action("Genre", "Filter", new { id = genre})">@genre</a>
         }
         @*<h3 id="genre">@Html.DisplayFor(model => model.movie.genre)</h3>*@
-        <div class="ratings">
-            <div class="ratingContainer" id="cmdbRating">
-                <p>CMDb: </p>
-                @if (Model.cmdbMovie != null)
-                {
-                    <p class="likes"><img class="filter-green" src="~/images/ThumbUp.svg" />@Model.cmdbMovie.numberOfLikes </p>
-                    <p class="dislikes"><img class="filter-red" src="~/images/ThumbDown.svg" />@Model.cmdbMovie.numberOfDislikes </p>
-                }
-                else
-                {
-                    <p class="likes"><img class="filter-green" src="~/images/ThumbUp.svg" />0</p>
-                    <p class="dislikes"><img class="filter-red" src="~/images/ThumbDown.svg" />0</p>
-                }
-            </div>
-
-            @foreach (var rating in Model.movie.ratings)
-            {
-                <div class="ratingContainer">
-                    <img src="@Url.Content(String.Format("~/images/{0}.png", rating.Source.Replace(' ', '_')))" class="icon" />
-                    <p>@rating.Source:</p>
-                    <p>
-                        @rating.Value
-                        @if (rating.Source == "Internet Movie Database")
-                        {
-                        <p> (@Model.movie.imdbVotes)</p>
-                    }
-                        </p>
-                    </div>
-                }
-        </div>
+        
 
         <h2 id="releaseDate">@Html.DisplayFor(model => model.movie.released)</h2>
         <p>@Html.DisplayFor(model => model.movie.boxOffice)</p>
@@ -60,6 +31,58 @@
         <h3 id="awards">@Html.DisplayFor(model => model.movie.awards)</h3>
         <button id="likeBtn" value="@Model.movie.imdbId">Like</button>
         <button id="dislikeBtn" value="@Model.movie.imdbId">Dislike</button>
+    </div>
+    <div class="ratings">
+        <div class="ratingContainer" id="cmdbRating">
+            <p>CMDb: </p>
+            @if (Model.cmdbMovie != null)
+            {
+                <p class="likes"><img class="filter-green" src="~/images/ThumbUp.svg" />@Model.cmdbMovie.numberOfLikes </p>
+                <p class="dislikes"><img class="filter-red" src="~/images/ThumbDown.svg" />@Model.cmdbMovie.numberOfDislikes </p>
+                <svg viewBox="0 0 36 36" id="ratingCircle">
+                    
+                    <path fill="none" stroke="#ff0000" stroke-width=4
+                          d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    @{ 
+                        double one = Model.cmdbMovie.numberOfLikes;
+                        double two = Model.cmdbMovie.numberOfDislikes + Model.cmdbMovie.numberOfLikes;
+                        double three = (one / two) * 100;
+                        int percentage = (int)three;
+                    }
+                    <path class="circle"
+                          stroke-dasharray="@percentage, 100"
+                          fill="none"
+                          stroke-width="4"
+                          style="stroke: #00ff00; animation: progress 1s ease-out forwards"
+                          d="M18 2.0845
+                          a 15.9155 15.9155 0 0 1 0 31.831
+                          a 15.9155 15.9155 0 0 1 0 -31.831" />
+                    <text x="18" y="20.35" class="percentage" style="fill: #00ff00; font-family: sans-serif; font-size: .5em; text-anchor: middle">@percentage%</text>
+                </svg>
+            }
+            else
+            {
+                <p class="likes"><img class="filter-green" src="~/images/ThumbUp.svg" />0</p>
+                <p class="dislikes"><img class="filter-red" src="~/images/ThumbDown.svg" />0</p>
+            }
+        </div>
+
+        @foreach (var rating in Model.movie.ratings)
+        {
+            <div class="ratingContainer">
+                <img src="@Url.Content(String.Format("~/images/{0}.png", rating.Source.Replace(' ', '_')))" class="icon" />
+                <p>@rating.Source:</p>
+                <p>
+                    @rating.Value
+                    @if (rating.Source == "Internet Movie Database")
+                    {
+                    <p> (@Model.movie.imdbVotes)</p>
+                }
+                    </p>
+                </div>
+            }
     </div>
 </section>
 

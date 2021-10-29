@@ -6,6 +6,7 @@ body {
     margin: 0;
     box-sizing: border-box;
     background-color: #1c1c1c;
+    color: white;
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -561,8 +562,10 @@ footer {
         #img a {
             margin:100px;
         }
-
-        #topMovieContent {
+        .movieContainer {
+            height: 1000px;
+        }
+            #topMovieContent {
             padding:20px 100px 20px 20px;
         }
 

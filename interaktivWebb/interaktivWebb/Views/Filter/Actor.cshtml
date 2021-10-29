@@ -19,7 +19,6 @@
 
                 <div class="posterContainer">
                     <img src="@movie.poster" />
-                    <div class="rank"></div>
                 </div>
             </a>
         }
@@ -52,7 +51,7 @@
         @foreach (var rating in movie.ratings)
         {
             <div class="ratingContainer">
-                <img src="@Url.Content(String.Format("~/images/{0}.png", rating.Source))" class="icon" />
+                <img src="@Url.Content(String.Format("~/images/{0}.png", rating.Source.Replace(' ', '_')))" class="icon" />
                 <p>@rating.Source:</p>
                 <p>@rating.Value</p>
             </div>
