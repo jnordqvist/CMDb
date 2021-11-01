@@ -10,12 +10,14 @@
 
         <a id="title" href="@Url.Action("Movies", "DetailPage", new { id = Model.TopMovie.imdbId })">@Model.TopMovie.Title</a>
 
-        <a id="img" href=@Url.Action("Movies", "DetailPage", new { id = Model.TopMovie.imdbId })>
-            <div class="posterContainer">
-                <img src="@Html.DisplayFor(model=>model.TopMovie.poster)" />
-                <div class="rank"></div>
+       
+            <div class="posterContainer" id="img">
+                <a href=@Url.Action("Movies", "DetailPage", new { id = Model.TopMovie.imdbId })>
+                    <img src="@Html.DisplayFor(model=>model.TopMovie.poster)" />
+                    <div class="rank"></div>
+                </a>
             </div>
-        </a>
+        
         <div id="topMovieContent">
             @if (@Model.TopMovie.plot.Length >= 50)
             {

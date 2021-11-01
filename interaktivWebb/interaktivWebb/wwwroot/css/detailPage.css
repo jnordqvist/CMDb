@@ -1,7 +1,9 @@
-﻿
+﻿html{
+    height:100%;
+}
 #movieContainer {
     display: flex;
-    flex-direction: column;
+    flex-direction:column;
     color: white;
 }
 
@@ -33,10 +35,75 @@
     font-size: 15px;
 }
 
-.actorLink {
+.actorLink, .genreLink {
     color: #b6c4f2;
     text-decoration: none;
     display: block;
 }
 
+#ratingCircle {
+    width: 50px;
+    height: 50px;
+}
 
+.ratings{
+    padding:20px;
+}
+
+#likeBtn, #dislikeBtn {
+    padding: 15px 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: white;
+    font-weight: 800;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#likeBtn:hover, #dislikeBtn:hover {
+    border: 2px solid white;
+}
+
+#likeBtn {
+    background-color: #59ac41;
+    color: #c1f5b7;
+    border: 2px solid #59ac41;
+}
+
+#dislikeBtn {
+    background-color: #a53535;
+    color: #cc9b9b;
+    border: 2px solid #a53535;
+}
+
+
+@media screen and (min-width: 1000px) {
+    #movieContainer {
+        display: grid;
+        height:100%;
+        grid-template-areas:
+            ". poster details"
+            ". ratings details";
+        grid-template-rows: 1fr 60%;
+        grid-template-columns: 300px 25% 500px;
+        color: white;
+    }
+
+    .poster {
+        grid-area: poster;
+        width: auto;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        max-height: 300px;
+        margin:5%;
+    }
+
+    #detailContainer {
+        grid-area: details;
+        padding: 20px;
+    }
+    .ratings{
+        grid-area:ratings;
+    }
+}

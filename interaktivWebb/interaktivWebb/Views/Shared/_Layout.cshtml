@@ -12,7 +12,7 @@
     <Header>
         <nav>
             <img id="burger" src="~/images/burgerClosed.svg" />
-            <a id="logo" href=@Url.Action("Index", "Home")>CMDb</a>
+            <a id="logo" href=@Url.Action("Index", "Home")><img src="~/images/cmdbLogo.svg" />CMDb</a>
             <div id="searchContainer">
                 <form asp-action="Movies" asp-controller="DetailPage" method="get">
                     <input id="searchField" name="id" type="text" placeholder="Search" required autocomplete="off" />
@@ -20,9 +20,9 @@
                 <img id="search" src="~/images/magnifyingGlass.svg" />
             </div>
             <div id="burgermenu">
-                
+                <h3>Genres</h3>
                 <ul>
-                   <h3>Genres</h3> 
+                    
                     @{
                         string[] genres = new string[] { "Comedy", "Action", "Sci-fi", "Fantasy", "Drama", "Documentary", "Adventure", "Romance" };
                         foreach (var genre in genres)
@@ -49,27 +49,29 @@
             </div>
             <div id="previewSearch">
 
-                @*<a id="searchLink" asp-action="Movies" asp-controller="DetailPage" asp-route-id="">
-                        <p id="previewTitle"></p>
-                    </a>
-                        <img id="previewImg" src="" />*@
-
             </div>
         </nav>
 
     </Header>
 
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
+     @RenderBody()
+        
+<footer>
+    <address>
+        <img src="~/images/email.svg"> <a href="mailto: hello@cmdb.nu">hello@cmdb.nu</a>
+    </address>
+    <address>
+        <img src="~/images/phone.svg"> <a href="tel: 1111111">1111111</a>
+    </address>
+    <div id="socialNetworks">
+        <img src="~/images/twitter.svg" />
+        <img src="~/images/facebook.svg" />
+        <img src="~/images/instagram.svg" />
     </div>
-    <footer>
-        <address>
-            <img src="~/images/email.svg"> <a href="mailto: hello@cmdb.nu">hello@cmdb.nu</a>
-            <img src="~/images/phone.svg"> <a href="tel: 1111111">1111111</a>
-        </address>
-    </footer>
+    
+    
+    <p>©Copyright 2021 cmdb.net</p>
+</footer>
 
     <script src="~/js/search.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
