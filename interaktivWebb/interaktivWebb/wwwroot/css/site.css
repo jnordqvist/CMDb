@@ -8,6 +8,7 @@ body {
     background-color: #1c1c1c;
     color: white;
     font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
 }
 
 #container {
@@ -67,13 +68,13 @@ header {
 }
 
 .likes {
-    filter: invert(26%) sepia(13%) saturate(3441%) hue-rotate(73deg) brightness(98%) contrast(98%);
+    filter: invert(52%) sepia(85%) saturate(338%) hue-rotate(60deg);
     color:black;
 }
 
 .dislikes {
-    filter: invert(10%) sepia(67%) saturate(6095%) hue-rotate(357deg) brightness(89%) contrast(96%);
-    color:black;
+    filter: invert(22%) sepia(55%) saturate(2198%) hue-rotate(338deg) brightness(100%) contrast(81%);
+    color: black;
 }
 
 nav {
@@ -223,16 +224,50 @@ input:focus {
 
 
 footer {
-    background-color: red;
+    background-color: #ffc506;
     display: flex;
+    flex-direction: column;
+    height: 300px;
 }
 
     footer a {
         text-decoration: none;
+        color: black;
     }
 
+    #socialNetworks {
 
+    }
+    #socialNetworks img {
+        height: 30px;
+        width: auto;
+    }
 
+#likeBtn, #dislikeBtn {
+    padding: 15px 20px;
+    width: 75%;
+    margin-bottom: 20px;
+    background-color: white;
+    font-weight: 800;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#likeBtn:hover, #dislikeBtn:hover {
+    border: 2px solid white;
+}
+
+#likeBtn {
+    background-color: #59ac41;
+    color: #c1f5b7;
+    border: 2px solid #59ac41;
+}
+
+#dislikeBtn {
+    background-color: #a53535;
+    color: #cc9b9b;
+    border: 2px solid #a53535;
+}
 
 #logo {
     text-decoration: none;
@@ -332,10 +367,27 @@ footer {
     display: none;
 }
 
+.actorLink, .genreLink {
+    width:fit-content;
+    padding: 15px 15px 15px 0;
+    font-size: 20px;
+}
+
+.actorLink:hover, .genreLink:hover {
+    color: #dfe7fb;
+    text-decoration: underline;
+    text-underline-position: under;
+}
+
+#ratingCircle {
+    margin-left: 10px;
+}
+
 @media (min-width: 600px) {
-    footer {
-        background-color: green;
+    body {
+        font-size: 18px;
     }
+
     #img{
         width: 80%;
         height: auto;
@@ -355,8 +407,8 @@ footer {
 }
 
 @media screen and (min-width: 1000px) {
-    footer {
-        background-color: greenyellow;
+    body {
+        font-size: 16px;
     }
 
     #burgermenu {
@@ -407,12 +459,15 @@ footer {
 
         #navlinks a {
             text-decoration: none;
-            color: #E76A87;
+            color: #F7C8D2;
             font-weight: 700;
+            padding: 2px 5px;
+            cursor: pointer;
         }
 
         #navlinks a:hover {
-            color: #f8e3ea;
+            color: white;
+            
         }
 
     #searchContainer {
@@ -439,6 +494,7 @@ footer {
         border: none;
         margin: 0;
         width: 80%;
+        color: white;
     }
 
     #previewSearch {
@@ -558,7 +614,21 @@ footer {
         width: auto;
     }
 
+    .filterMovieContainer {
+        display: flex;
+        flex-direction: row;
+        flex-wrap:wrap;
+        justify-content: center;
+    }
+    .filterMovieContainer .movieContainer {
+        width: 300px;
+        height: 700px;
+    }
     @media screen and (min-width: 1400px) {
+        body {
+            font-size: 16px;
+        }
+
         #img a {
             margin:100px;
         }

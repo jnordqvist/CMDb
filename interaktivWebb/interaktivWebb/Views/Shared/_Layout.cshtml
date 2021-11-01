@@ -49,11 +49,6 @@
             </div>
             <div id="previewSearch">
 
-                @*<a id="searchLink" asp-action="Movies" asp-controller="DetailPage" asp-route-id="">
-                        <p id="previewTitle"></p>
-                    </a>
-                        <img id="previewImg" src="" />*@
-
             </div>
         </nav>
 
@@ -61,12 +56,22 @@
 
      @RenderBody()
         
-    <footer>
-        <address>
-            <img src="~/images/email.svg"> <a href="mailto: hello@cmdb.nu">hello@cmdb.nu</a>
-            <img src="~/images/phone.svg"> <a href="tel: 1111111">1111111</a>
-        </address>
-    </footer>
+<footer>
+    <address>
+        <img src="~/images/email.svg"> <a href="mailto: hello@cmdb.nu">hello@cmdb.nu</a>
+    </address>
+    <address>
+        <img src="~/images/phone.svg"> <a href="tel: 1111111">1111111</a>
+    </address>
+    <div id="socialNetworks">
+        <img src="~/images/twitter.svg" />
+        <img src="~/images/facebook.svg" />
+        <img src="~/images/instagram.svg" />
+    </div>
+    
+    
+    <p>©Copyright 2021 cmdb.net</p>
+</footer>
 
     <script src="~/js/search.js"></script>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
