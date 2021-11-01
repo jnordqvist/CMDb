@@ -29,23 +29,21 @@
         <p>@Html.DisplayFor(model => model.movie.boxOffice)</p>
 
         <h3 id="awards">@Html.DisplayFor(model => model.movie.awards)</h3>
-        <button id="likeBtn" value="@Model.movie.imdbId">Like</button>
-        <button id="dislikeBtn" value="@Model.movie.imdbId">Dislike</button>
     </div>
     <div class="ratings">
         <div class="ratingContainer" id="cmdbRating">
-            <p>CMDb: </p>
+            <p><img src="~/images/cmdbLogo.svg" />CMDb: </p>
             @if (Model.cmdbMovie != null)
             {
                 <p class="likes"><img class="filter-green" src="~/images/ThumbUp.svg" />@Model.cmdbMovie.numberOfLikes </p>
                 <p class="dislikes"><img class="filter-red" src="~/images/ThumbDown.svg" />@Model.cmdbMovie.numberOfDislikes </p>
                 <svg viewBox="0 0 36 36" id="ratingCircle">
-                    
+
                     <path fill="none" stroke="#a53535" stroke-width=4
                           d="M18 2.0845
                           a 15.9155 15.9155 0 0 1 0 31.831
                           a 15.9155 15.9155 0 0 1 0 -31.831" />
-                    @{ 
+                    @{
                         double one = Model.cmdbMovie.numberOfLikes;
                         double two = Model.cmdbMovie.numberOfDislikes + Model.cmdbMovie.numberOfLikes;
                         double three = (one / two) * 100;
@@ -83,6 +81,9 @@
                     </p>
                 </div>
             }
+
+        <button id="likeBtn" value="@Model.movie.imdbId">Like</button>
+        <button id="dislikeBtn" value="@Model.movie.imdbId">Dislike</button>
     </div>
 </section>
 

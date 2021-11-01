@@ -228,6 +228,8 @@ footer {
     display: flex;
     flex-direction: column;
     height: 300px;
+    justify-content:center;
+    align-items:center;
 }
 
     footer a {
@@ -243,37 +245,18 @@ footer {
         width: auto;
     }
 
-#likeBtn, #dislikeBtn {
-    padding: 15px 20px;
-    width: 75%;
-    margin-bottom: 20px;
-    background-color: white;
-    font-weight: 800;
-    border-radius: 5px;
-    cursor: pointer;
-}
 
-#likeBtn:hover, #dislikeBtn:hover {
-    border: 2px solid white;
-}
-
-#likeBtn {
-    background-color: #59ac41;
-    color: #c1f5b7;
-    border: 2px solid #59ac41;
-}
-
-#dislikeBtn {
-    background-color: #a53535;
-    color: #cc9b9b;
-    border: 2px solid #a53535;
-}
 
 #logo {
     text-decoration: none;
     color: white;
     grid-area: logotype;
-    margin-left: 5px;
+    margin-left: 40%;
+    display:flex;
+    align-items:center;
+    width:fit-content;
+    justify-content:center;
+    font-weight:bold;
 }
 
 #burger {
@@ -388,6 +371,10 @@ footer {
         font-size: 18px;
     }
 
+    #logo {
+        margin-left: 5px;
+    }
+
     #img{
         width: 80%;
         height: auto;
@@ -397,7 +384,7 @@ footer {
         margin-left: 10%;
         font-size: 20px;
     }
-    #banner a {
+    #title {
         text-align: center;
     }
 
@@ -427,7 +414,7 @@ footer {
         grid-template-areas:
             "logotype . search"
             "navlinks navlinks navlinks";
-        grid-template-columns: 5% 70% 25%;
+        grid-template-columns: 10% 65% 25%;
         grid-template-rows: 50px 30px;
     }
     
@@ -525,6 +512,12 @@ footer {
     #title {
         grid-area: title;
         margin-top: 20px;
+        text-align: left;
+        padding-left: 20px;
+        text-decoration: none;
+        color: White;
+        font-size: 25px;
+        font-weight: 900;
     }
 
     #topMovieContent {
@@ -569,10 +562,6 @@ footer {
 
 
     #banner a {
-        text-decoration: none;
-        color: White;
-        font-size: 25px;
-        font-weight: 900;
     }
 
     #topList {
@@ -623,6 +612,10 @@ footer {
     .filterMovieContainer .movieContainer {
         width: 300px;
         height: 700px;
+    }
+
+    footer{
+        flex-direction:row;
     }
     @media screen and (min-width: 1400px) {
         body {

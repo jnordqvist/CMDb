@@ -12,7 +12,7 @@
     <Header>
         <nav>
             <img id="burger" src="~/images/burgerClosed.svg" />
-            <a id="logo" href=@Url.Action("Index", "Home")>CMDb</a>
+            <a id="logo" href=@Url.Action("Index", "Home")><img src="~/images/cmdbLogo.svg" />CMDb</a>
             <div id="searchContainer">
                 <form asp-action="Movies" asp-controller="DetailPage" method="get">
                     <input id="searchField" name="id" type="text" placeholder="Search" required autocomplete="off" />
@@ -20,9 +20,9 @@
                 <img id="search" src="~/images/magnifyingGlass.svg" />
             </div>
             <div id="burgermenu">
-                
+                <h3>Genres</h3>
                 <ul>
-                   <h3>Genres</h3> 
+                    
                     @{
                         string[] genres = new string[] { "Comedy", "Action", "Sci-fi", "Fantasy", "Drama", "Documentary", "Adventure", "Romance" };
                         foreach (var genre in genres)

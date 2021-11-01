@@ -46,11 +46,41 @@
     height: 50px;
 }
 
+.ratings{
+    padding:20px;
+}
+
+#likeBtn, #dislikeBtn {
+    padding: 15px 20px;
+    width: 100%;
+    margin-bottom: 20px;
+    background-color: white;
+    font-weight: 800;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#likeBtn:hover, #dislikeBtn:hover {
+    border: 2px solid white;
+}
+
+#likeBtn {
+    background-color: #59ac41;
+    color: #c1f5b7;
+    border: 2px solid #59ac41;
+}
+
+#dislikeBtn {
+    background-color: #a53535;
+    color: #cc9b9b;
+    border: 2px solid #a53535;
+}
+
 
 @media screen and (min-width: 1000px) {
     #movieContainer {
         display: grid;
-        height:100vh;
+        height:100%;
         grid-template-areas:
             ". poster details"
             ". ratings details";
