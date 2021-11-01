@@ -19,12 +19,18 @@ namespace interaktivWebb.Controllers
             this.cmdbRepository = cmdbRepository;
             this.omdbRepository = omdbRepository;
         }
+        /// <summary>
+        /// kollar om användarens input är ett imdbId eller ej, hämtar data från OMDb med rätt endpoint
+        /// </summary>
+        /// <param name="id">textinput från användaren</param>
+        /// <returns></returns>
         public async Task<IActionResult> Movies(string id)
         {
+            
             Regex reg = new Regex("^(tt[0-9]{7,9})$");
             if (reg.IsMatch(id))
             {
-                var movieInformation = await omdbRepository.GetMovieInformation(id);
+                var movieInformation = await omdbRepository.GetMovieInformationById(id);
                 var cmdbMovie = await cmdbRepository.GetMovie(id);
                 var model = new MovieViewModel(movieInformation, cmdbMovie);
                 return View(model);
@@ -37,7 +43,6 @@ namespace interaktivWebb.Controllers
                 var model = new MovieViewModel(movieInformation, cmdbMovie);
                 return View(model);
             }
-
         }
     }
 }

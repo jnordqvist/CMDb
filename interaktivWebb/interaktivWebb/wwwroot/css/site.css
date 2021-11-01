@@ -16,6 +16,7 @@ body {
     flex-direction: column;
     place-items: center;
     overflow-x: hidden;
+    overflow-y:hidden;
 }
 
 header {
@@ -192,7 +193,6 @@ nav {
 
 .movieContainer {
     background-color: #1c1c1c;
-    overflow:hidden;
     display:flex;
     flex-direction:column;
     border-bottom: solid 2px black;
@@ -574,13 +574,9 @@ footer {
     }
 
     .movieContainer {
-        height: 800px;
+        height: 100%;
         padding: 0;
         margin: 0 20px;
-        overflow-y: scroll;
-    }
-    .movieContainer::-webkit-scrollbar {
-        display:none;
     }
 
     .posterContainer {
@@ -624,9 +620,6 @@ footer {
 
         #img a {
             margin:100px;
-        }
-        .movieContainer {
-            height: 1000px;
         }
             #topMovieContent {
             padding:20px 100px 20px 20px;

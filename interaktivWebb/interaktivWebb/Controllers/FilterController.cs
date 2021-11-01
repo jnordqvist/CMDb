@@ -20,11 +20,15 @@ namespace interaktivWebb.Controllers
             this.omdbRepository = omdbRepository;
         }
 
+        /// <summary>
+        /// hämtar filmer baserat på skådespelare
+        /// </summary>
+        /// <param name="id">vald skådespelare</param>
+        /// <returns></returns>
         public async Task<IActionResult> Actor(string id)
         {
             var tasks = new List<Task>();
-            var movies = await cmdbRepository.GetMovies();
-            movies = movies.OrderByDescending(o => o.numberOfLikes);
+            var movies = await cmdbRepository.GetAllMovies();
 
             List<string> sortedMovies = new List<string>();
 
@@ -32,7 +36,7 @@ namespace interaktivWebb.Controllers
             foreach (var movie in movies)
             {
                 sortedMovies.Add(movie.imdbID);
-                var result = omdbRepository.GetMovieInformation(movie.imdbID);
+                var result = omdbRepository.GetMovieInformationById(movie.imdbID);
                 allMovies.Add(result.Result);
                 tasks.Add(result);
             }
@@ -43,11 +47,15 @@ namespace interaktivWebb.Controllers
             return View(model);
         }
 
+        /// <summary>
+        /// hämtar filmer baserat på genre
+        /// </summary>
+        /// <param name="id">vald genre</param>
+        /// <returns></returns>
         public async Task<IActionResult> Genre(string id)
         {
             var tasks = new List<Task>();
-            var movies = await cmdbRepository.GetMovies();
-            movies = movies.OrderByDescending(o => o.numberOfLikes);
+            var movies = await cmdbRepository.GetAllMovies();
 
             List<string> sortedMovies = new List<string>();
 
@@ -55,7 +63,7 @@ namespace interaktivWebb.Controllers
             foreach (var movie in movies)
             {
                 sortedMovies.Add(movie.imdbID);
-                var result = omdbRepository.GetMovieInformation(movie.imdbID);
+                var result = omdbRepository.GetMovieInformationById(movie.imdbID);
                 allMovies.Add(result.Result);
                 tasks.Add(result);
             }

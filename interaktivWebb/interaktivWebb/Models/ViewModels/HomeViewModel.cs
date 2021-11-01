@@ -19,8 +19,5 @@ namespace interaktivWebb.Models.ViewModels
             this.cmdbMovies = cmdbMovies;
             TopMovie = movies[0];
         }
-
-     
-
     }
 }

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="~/css/site.css" rel="stylesheet"  type="text/css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>CMDb</title>
 </head>
 <body>
     <Header>
@@ -24,7 +24,7 @@
                 <ul>
                     
                     @{
-                        string[] genres = new string[] { "Comedy", "Action", "Sci-fi", "Fantasy", "Drama", "Documentary", "Adventure", "Romance" };
+                        string[] genres = new string[] { "Comedy", "Action", "Sci-Fi", "Fantasy", "Drama", "Documentary", "Adventure", "Romance" };
                         foreach (var genre in genres)
                         {
                             <li>
@@ -74,8 +74,6 @@
 </footer>
 
     <script src="~/js/search.js"></script>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/burger.js"></script>
     @RenderSection("Scripts", required: false)
 </body>

@@ -25,7 +25,6 @@ function closeSearch() {
 
 function toggleSearch() {
     let x = window.matchMedia("(max-width : 999px)")
-    console.log(x.matches)
     if (x.matches) {
         if (searching) {
             return closeSearch()
@@ -42,6 +41,8 @@ async function search() {
     div.innerHTML = ''
     let input = document.querySelector("#searchField").value;
     const response = await fetch(`${baseUrl}s=${input}${key}`).then(response => response.json())
+
+    //om search-endpoint inte ger något response körs en get by title istället
     if (response.Response === "True") {
         for (var movie in response.Search) {
             let currentMovie = response.Search[movie]

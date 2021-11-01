@@ -30,7 +30,8 @@
 
             <div class="ratingContainer">
                 <img />
-                <p>CMDb: </p>
+                <p>
+<img src="~/images/cmdbLogo.svg" />CMDb: </p>
                 <p class="likes"><img class="filter-green" src="~/images/ThumbUp.svg" />@Model.filteredCmdbMovies.Where(x => x.imdbID == movie.imdbId).First().numberOfLikes </p>
                 <p class="dislikes"><img class="filter-red" src="~/images/ThumbDown.svg" />@Model.filteredCmdbMovies.Where(x => x.imdbID == movie.imdbId).First().numberOfDislikes </p>
             </div>

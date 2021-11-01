@@ -29,33 +29,33 @@ namespace interaktivWebb.Controllers
         {
             try
             {
-                
-
                 return View(await getModel());
-
             }
             catch (Exception)
             {
-
                 throw;
             }
             
         }
 
+        /// <summary>
+        /// hämtar data om filmer från cmdb och omdb, sorterar på numberOfLikes
+        /// </summary>
+        /// <returns></returns>
         private async Task<HomeViewModel> getModel()
         {
             var tasks = new List<Task>();
             var movies = await cmdbRepository.GetMovies();
-            movies = movies.OrderByDescending(o => o.numberOfLikes);
 
             List<string> sortedMovies = new List<string>();
             List<string> genres = new List<string>();
 
             var allMovies = new List<OmdbMovieDto>();
+
             foreach (var movie in movies)
             {
                 sortedMovies.Add(movie.imdbID);
-                var result = omdbRepository.GetMovieInformation(movie.imdbID);
+                var result = omdbRepository.GetMovieInformationById(movie.imdbID);
                 allMovies.Add(result.Result);                
                 tasks.Add(result);
             }
@@ -64,6 +64,5 @@ namespace interaktivWebb.Controllers
             allMovies = allMovies.OrderBy(x => sortedMovies.IndexOf(x.imdbId)).ToList();
             return new HomeViewModel(allMovies, movies);
         }
-
     }
 }
