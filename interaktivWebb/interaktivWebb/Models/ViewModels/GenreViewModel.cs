@@ -17,16 +17,20 @@ namespace interaktivWebb.Models.ViewModels
             Genre = targetGenre;
             foreach (var movie in omdbMovies)
             {
-                var genreList = movie.genre.Split(", ").ToList();
-                foreach (var currentGenre in genreList)
+                if(movie.genre != null)
                 {
-                    if (currentGenre == targetGenre)
+                    var genreList = movie.genre.Split(", ").ToList();
+                    foreach (var currentGenre in genreList)
                     {
-                        filteredOmdbMovies.Add(movie);
-                        filteredCmdbMovies.Add(cmdbMovies.Where(x => x.imdbID == movie.imdbId).First());
-                        break;
+                        if (currentGenre == targetGenre)
+                        {
+                            filteredOmdbMovies.Add(movie);
+                            filteredCmdbMovies.Add(cmdbMovies.Where(x => x.imdbID == movie.imdbId).First());
+                            break;
+                        }
                     }
                 }
+                
             }
         }
     }

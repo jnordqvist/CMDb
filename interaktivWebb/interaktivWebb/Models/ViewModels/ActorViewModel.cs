@@ -16,15 +16,18 @@ namespace interaktivWebb.Models.ViewModels
             actor = targetActor;
             foreach (var movie in omdbMovies)
             {
-                var actorList = movie.actors.Split(", ").ToList();
-                foreach (var currentActor in actorList)
+                if (movie.actors != null)
                 {
-                    if (currentActor == targetActor)
+                    var actorList = movie.actors.Split(", ").ToList();
+                    foreach (var currentActor in actorList)
                     {
-                        filteredOmdbMovies.Add(movie);
-                        filteredCmdbMovies.Add(cmdbMovies.Where(x => x.imdbID == movie.imdbId).First());
-                        break;
-                    }
+                        if (currentActor == targetActor)
+                        {
+                            filteredOmdbMovies.Add(movie);
+                            filteredCmdbMovies.Add(cmdbMovies.Where(x => x.imdbID == movie.imdbId).First());
+                            break;
+                        }
+                    } 
                 }
             }
         }

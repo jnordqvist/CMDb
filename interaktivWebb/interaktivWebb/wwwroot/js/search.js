@@ -98,12 +98,11 @@ const showSearchSuggestions = () => {
 }
 
 const hideSearchSuggestions = () => {
-    setTimeout(function () {
         div.style.display = "none"
-    },100)
 }
 
 let searchField = document.querySelector("#searchField")
 searchField.addEventListener("blur", hideSearchSuggestions)
 searchField.addEventListener("focus", showSearchSuggestions)
 searchField.addEventListener("input", search)
+div.addEventListener("click", showSearchSuggestions)
