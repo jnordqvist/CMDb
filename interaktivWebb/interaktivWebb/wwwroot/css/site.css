@@ -31,6 +31,7 @@ header {
 {
     position: absolute;
     top: 50px;
+    width: 100%;
     display: flex;
     height: auto;
     background-color: #1c1c1c;
@@ -274,7 +275,7 @@ footer {
 #searchContainerExpanded {
     display: flex;
     height: 50px;
-    background-color: bisque;
+    background-color: #8d1733;
     grid-area: burger;
     grid-column: 1 / span 3;
     justify-content: right;
@@ -294,6 +295,7 @@ footer {
     border: none;
     margin: 0;
     width: 80%;
+    color: white;
 }
 
     ::placeholder {
@@ -454,7 +456,6 @@ footer {
 
         #navlinks a:hover {
             color: white;
-            
         }
 
     #searchContainer {
@@ -485,14 +486,9 @@ footer {
     }
 
     #previewSearch {
-        position: absolute;
         width: 45%;
-        top: 50px;
         left: 55%;
-        display: flex;
-        height: auto;
-        background-color: #1c1c1c;
-        flex-direction: column;
+        top: 81px;
     }
     .moviePreviewTextContainer {
         flex-direction: row;
@@ -547,21 +543,6 @@ footer {
     
     #img .rank {
         margin: 40px;
-    }
-    .ratings img {
-        width: auto;
-        max-height: 15px;
-        margin: 0px 5px;
-    }
-
-    .ratingContainer {
-        display: flex;
-        flex-wrap: wrap;
-        align-items: center;
-    }
-
-
-    #banner a {
     }
 
     #topList {
