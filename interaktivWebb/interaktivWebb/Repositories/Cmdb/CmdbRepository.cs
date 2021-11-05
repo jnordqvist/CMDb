@@ -25,7 +25,7 @@ namespace interaktivWebb.Repositories.Cmdb
 
         public async Task<IEnumerable<MovieDto>> GetAllMovies()
         {
-            var res = await client.GetAsync<IEnumerable<MovieDto>>($"{baseUrl}Movie");
+            var res = await client.GetAsync<IEnumerable<MovieDto>>($"{baseUrl}Toplist");
             return res;
         }
 

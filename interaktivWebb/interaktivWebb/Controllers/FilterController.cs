@@ -35,10 +35,14 @@ namespace interaktivWebb.Controllers
             var allMovies = new List<OmdbMovieDto>();
             foreach (var movie in movies)
             {
+                tasks.Add(Task.Run(
+                    async () =>
+                    {
+                        var result = await omdbRepository.GetMovieInformationById(movie.imdbID);
+                        allMovies.Add(result);
+                    }
+                    ));
                 sortedMovies.Add(movie.imdbID);
-                var result = omdbRepository.GetMovieInformationById(movie.imdbID);
-                allMovies.Add(result.Result);
-                tasks.Add(result);
             }
             await Task.WhenAll(tasks);
 
@@ -62,10 +66,14 @@ namespace interaktivWebb.Controllers
             var allMovies = new List<OmdbMovieDto>();
             foreach (var movie in movies)
             {
+                tasks.Add(Task.Run(
+                    async () =>
+                    {
+                        var result = await omdbRepository.GetMovieInformationById(movie.imdbID);
+                        allMovies.Add(result);
+                    }
+                    ));
                 sortedMovies.Add(movie.imdbID);
-                var result = omdbRepository.GetMovieInformationById(movie.imdbID);
-                allMovies.Add(result.Result);
-                tasks.Add(result);
             }
             await Task.WhenAll(tasks);
 

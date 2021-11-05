@@ -98,7 +98,9 @@ const showSearchSuggestions = () => {
 }
 
 const hideSearchSuggestions = () => {
+    setTimeout(function () {
         div.style.display = "none"
+    }, 150)
 }
 
 let searchField = document.querySelector("#searchField")

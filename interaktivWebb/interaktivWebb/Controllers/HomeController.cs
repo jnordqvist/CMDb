@@ -35,7 +35,6 @@ namespace interaktivWebb.Controllers
             {
                 throw;
             }
-            
         }
 
         /// <summary>
@@ -48,16 +47,19 @@ namespace interaktivWebb.Controllers
             var movies = await cmdbRepository.GetMovies();
 
             List<string> sortedMovies = new List<string>();
-            List<string> genres = new List<string>();
 
             var allMovies = new List<OmdbMovieDto>();
 
             foreach (var movie in movies)
             {
+                tasks.Add(Task.Run(
+                    async () =>
+                    {
+                        var result = await omdbRepository.GetMovieInformationById(movie.imdbID);
+                        allMovies.Add(result);
+                    }
+                    ));
                 sortedMovies.Add(movie.imdbID);
-                var result = omdbRepository.GetMovieInformationById(movie.imdbID);
-                allMovies.Add(result.Result);                
-                tasks.Add(result);
             }
             await Task.WhenAll(tasks);
 

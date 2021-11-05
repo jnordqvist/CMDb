@@ -8,12 +8,12 @@ namespace interaktivWebb.Models.ViewModels
 {
     public class ActorViewModel
     {
-        public string actor { get; set; }
-        public List<OmdbMovieDto> filteredOmdbMovies { get; set; } = new List<OmdbMovieDto>();
-        public List<MovieDto> filteredCmdbMovies { get; set; } = new List<MovieDto>();
+        public string Actor { get; }
+        public List<OmdbMovieDto> filteredOmdbMovies { get; } = new List<OmdbMovieDto>();
+        public List<MovieDto> filteredCmdbMovies { get; } = new List<MovieDto>();
         public ActorViewModel(List<OmdbMovieDto> omdbMovies, IEnumerable<MovieDto> cmdbMovies, string targetActor)
         {
-            actor = targetActor;
+            Actor = targetActor;
             foreach (var movie in omdbMovies)
             {
                 if (movie.actors != null)
@@ -24,7 +24,7 @@ namespace interaktivWebb.Models.ViewModels
                         if (currentActor == targetActor)
                         {
                             filteredOmdbMovies.Add(movie);
-                            filteredCmdbMovies.Add(cmdbMovies.Where(x => x.imdbID == movie.imdbId).First());
+                            filteredCmdbMovies.Add(cmdbMovies.Where(x => x.imdbID == movie.imdbId).FirstOrDefault());
                             break;
                         }
                     } 
